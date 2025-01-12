@@ -23,6 +23,84 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 } )
 
+
+// Sélectionner tous les blocs
+const blocks = document.querySelectorAll('.block');
+
+// Fonction d'activation lorsque l'élément est visible
+const handleIntersection = (entries, observer) => {
+    entries.forEach(entry => {
+        if (entry.isIntersecting) {
+            // Ajoute la classe 'visible' lorsque l'élément est visible
+            entry.target.classList.add('visible');
+            // On arrête l'observation de cet élément une fois qu'il est visible
+            observer.unobserve(entry.target);
+        }
+    });
+};
+
+// Créer une instance d'IntersectionObserver
+const observer = new IntersectionObserver(handleIntersection, {
+    threshold: 0.5, // Observer lorsque 50% du bloc est visible
+    rootMargin: '0px 0px -50px 0px' // Déclenche l'observation un peu avant l'élément
+});
+
+// Observer chaque bloc
+blocks.forEach(block => {
+    observer.observe(block);
+});
+
+
+
+document.addEventListener('DOMContentLoaded', function () {
+    const gearsLeft = document.querySelectorAll('.corner-nut.top-left, .corner-nut.bottom-left'); // Roues à gauche
+    const gearsRight = document.querySelectorAll('.corner-nut.top-right, .corner-nut.bottom-right'); // Roues à droite
+    let lastScrollTop = 0; // Position précédente du scroll
+
+    // Fonction pour détecter la direction du défilement
+    function handleScroll() {
+        console.log('Scroll détecté');
+        const currentScrollTop = window.scrollY || document.documentElement.scrollTop;
+        const isScrollingDown = currentScrollTop > lastScrollTop;
+
+        // Gestion des roues à gauche
+        gearsLeft.forEach(gear => {
+            gear.classList.remove('rotate-left', 'rotate-right'); // Réinitialiser les classes
+            if (isScrollingDown) {
+                gear.classList.add('rotate-right'); // Vers la droite en descendant
+            } else {
+                gear.classList.add('rotate-left'); // Vers la gauche en montant
+            }
+        });
+
+        // Gestion des roues à droite
+        gearsRight.forEach(gear => {
+            gear.classList.remove('rotate-left', 'rotate-right'); // Réinitialiser les classes
+            if (isScrollingDown) {
+                gear.classList.add('rotate-left'); // Vers la gauche en descendant
+            } else {
+                gear.classList.add('rotate-right'); // Vers la droite en montant
+            }
+        });
+
+        // Retirer les classes après l'animation
+        setTimeout(() => {
+            gearsLeft.forEach(gear => gear.classList.remove('rotate-left', 'rotate-right'));
+            gearsRight.forEach(gear => gear.classList.remove('rotate-left', 'rotate-right'));
+        }, 1000); // Durée de l'animation (1s)
+
+        lastScrollTop = currentScrollTop <= 0 ? 0 : currentScrollTop; // Empêche les valeurs négatives
+    }
+
+    // Ajouter un écouteur pour le défilement
+    window.addEventListener('scroll', handleScroll);
+});
+
+
+
+
+
+
 jQuery(document).ready(function($) {
     function loadPhotos(page = 1) {
         let category = $('#category-filter').val();

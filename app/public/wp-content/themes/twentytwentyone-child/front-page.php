@@ -8,68 +8,28 @@ get_header();
 <main class="home-page">
     <section class="hero" style="background-image: url('<?php echo get_random_photo_background(); ?>');">
         <div class="hero-content">
-            <h1>PHOTOGRAPHE EVENT</h1>
+            <h1>Développeur Web Wordpress</h1>
+            <img src="http://aymericbdev.local/wp-content/themes/twentytwentyone-child/assets-child\gear.png" class="gear">
         </div>
     </section>
-    <section class="photo-catalogue">
-        <div class="filter-container">
-            <div class="filter-group">
-                <select id="category-filter">
-                    <option value="">Catégories</option>
-                    <?php
-                    $categories = get_terms(array(
-                        'taxonomy' => 'categorie',
-                        'hide_empty' => true,
-                    ));
-
-                    foreach ($categories as $category) {
-                        echo '<option value="' . esc_attr($category->term_id) . '">' . esc_html($category->name) . '</option>';
-                    }
-                    ?>
-                </select>
-                <select id="format-filter">
-                    <option value="">Formats</option>
-                    <?php
-                    $formats = get_terms(array(
-                        'taxonomy' => 'format',
-                        'hide_empty' => true,
-                    ));
-
-                    foreach ($formats as $format) {
-                        echo '<option value="' . esc_attr($format->term_id) . '">' . esc_html($format->name) . '</option>';
-                    }
-                    ?>
-                </select>
-            </div>
-            <div class="filter-group">
-                <select id="date-order">
-                    <option value="">Trier par</option>
-                    <option value="DESC">à partir des plus récentes</option>
-                    <option value="ASC">à partir des plus anciennes</option>
-                </select>
+    <section class="blocks-container">
+        <div id="block1" class="block">
+            <div class="content">
+                <h2>Formation certifiante</h2>
+                <p> Fasciné par les technologies numériques et informatique, j'ai réalisé une formation de développeur web wordpress certifiante auprès de l'organisme Openclassrooms. C'est un plaisir de coder et créer dans ces technologies au développement constant.</p>
             </div>
         </div>
-        <div class="photo-grid">
-            <?php
-            $args = array(
-                'post_type'      => 'photo',
-                'posts_per_page' => 8,
-                'orderby'        => 'date',
-                'order'          => 'DESC'
-            );
-            $photo_query = new WP_Query($args);
-            if ($photo_query->have_posts()) :
-                while ($photo_query->have_posts()) : $photo_query->the_post();
-                    get_template_part('template_parts/photo_block', null, array('photo_id' => get_the_ID()));
-                endwhile;
-            else :
-                echo '<p>Aucune photo trouvée.</p>';
-            endif;
-            wp_reset_postdata();
-            ?>
+        <div id="block2" class="block">
+            <div class="content">
+                <h2>Projet d'animations</h2>
+                <p>Le projet 9, "Améliorez le site d'un studio d'animation avec JavaScript et des animations CSS", sert à découvrir différentes animations possibles avec les outils cités. L'opportunité de découvrir une partie des choses que l'on peut produire en front end.</p>
+            </div>
         </div>
-        <div class="load-more-container">
-            <button id="load-more" data-page="1" data-url="<?php echo admin_url('admin-ajax.php'); ?>">Charger plus</button>
+        <div id="block3" class="block">
+            <div class="content">
+                <h2>Projet de site de photographe</h2>
+                <p>Le projet 12, "Créez un site WordPress complexe pour une photographe freelance". Un projet complexe où on apprend à créer un site entier ainsi que la méthode Ajax.</p>
+            </div>
         </div>
     </section>
 </main>

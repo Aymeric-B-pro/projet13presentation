@@ -38,6 +38,8 @@
     <?php else : ?>
         <p style="color: red;">No footer menu assigned</p>
     <?php endif; ?>
+
+    <?php get_template_part('template_parts/rotating-gears'); ?>
     <!-- Lightbox structure -->
     <div id="lightbox" class="lightbox" style="display: none;">
         <button class="closelightbox" id="closelightbox">&times;</button>
@@ -53,8 +55,8 @@
             <button class="nav-linklight next-linklight" id="next-linklight">Suivante &rarr;</button>
         </div>
     </div>
-<?php wp_footer(); ?>
-<?php get_template_part('template_parts/modal-contact'); ?>
+    <?php wp_footer(); ?>
+    <?php get_template_part('template_parts/modal-contact'); ?>
 </footer>
 </div>
 </body>

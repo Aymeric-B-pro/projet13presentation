@@ -11,53 +11,48 @@ Version: 1.0.0
 
 /* --- Fonts --- */
 @font-face {
-    font-family: 'Space Mono';
-    src: url('fonts/SpaceMono-Regular.ttf') format('truetype');
+    font-family: 'Sora';
+    src: url('fonts/Sora-Regular.ttf') format('truetype');
     font-weight: 400;
     font-style: normal;
 }
 @font-face {
-    font-family: 'Space Mono';
-    src: url('fonts/SpaceMono-Italic.ttf') format('truetype');
-    font-weight: 400;
-    font-style: italic;
-}
-@font-face {
-    font-family: 'Space Mono';
-    src: url('fonts/SpaceMono-BoldItalic.ttf') format('truetype');
+    font-family: 'Sora';
+    src: url('fonts/Sora-Bold.ttf') format('truetype');
     font-weight: 700;
-    font-style: italic;
-}
-@font-face {
-    font-family: 'Poppins';
-    src: url('fonts/Poppins-Light.ttf') format('truetype');
-    font-weight: 300;
     font-style: normal;
 }
 @font-face {
+    font-family: 'Sora';
+    src: url('fonts/Sora-ExtraBold.ttf') format('truetype');
+    font-weight: 800;
+    font-style: normal;
+}
+
+@font-face {
     font-family: 'Poppins';
-    src: url('fonts/Poppins-Medium.ttf') format('truetype');
-    font-weight: 500;
+    src: url('fonts/Poppins-Regular.ttf') format('truetype');
+    font-weight: 400;
     font-style: normal;
   }
 h1 {
-    font-family: 'Space Mono', sans-serif;
-    font-weight: 700;
-    font-style: italic;
+    font-family: 'Sora', sans-serif;
+    font-weight: 800;
+    font-style: normal;
 }
 h2 {
-    font-family: 'Space Mono', sans-serif;
-    font-weight: 400;
-    font-style: italic;
+    font-family: 'Sora', sans-serif;
+    font-weight: 700;
+    font-style: normal;
 }
 h3 {
-    font-family: 'Space Mono', sans-serif;
+    font-family: 'Sora', sans-serif;
     font-weight: 400;
     font-style: normal;
 }
 p {
     font-family: 'Poppins', sans-serif;
-    font-weight: 300;
+    font-weight: 400;
 }
 a:focus,
 a:active {
@@ -69,22 +64,41 @@ input:focus, textarea:focus, button:focus {
 /* Style du header */
 .site-header {
     display: flex;
-    justify-content: space-between;
-    align-items: center;
-    height: 80px;
+    flex-direction: column;
+    align-items: center !important;
+    justify-content: space-between !important;
+    height: auto;
     margin: 0 50px !important;
-    padding: 0px !important;
+    padding: 20px 0 !important;
     max-width: 100% !important;
-
+    background-color: rgba(255, 255, 255, 0.63);
+    padding: 20px; /* Ajoute de l'espace intérieur */
+    border-radius: 10px; /* Angles arrondis */
+    border-style: double; /* Style de la bordure */
+    border-width: 0 8px 8px 8px; /* Haut: 0, Droite: 8px, Bas: 8px, Gauche: 8px */
+    border-color: #000; /* Couleur de la bordure */
 }
+
+.primary-navigation {
+    display: flex;
+    align-items: center;
+    list-style: none;
+    padding: 0px 10px;
+    margin: 0 !important;
+    justify-content: space-between !important;
+}
+
 .primary-navigation a{
+    display: flex;
     background: none !important;
     outline: none !important;
     text-decoration: none !important;
     color: black;
-    font-family: 'Space Mono', sans-serif !important;
+    font-family: 'Sora', sans-serif !important;
     font-weight: 400;
     font-size: 16px;
+    justify-content: space-between !important;
+    margin: 0 20px;
 }
 
 .primary-menu-container a{
@@ -116,7 +130,8 @@ input:focus, textarea:focus, button:focus {
     flex-grow: 1;
     text-align: right;
 }
-.primary-menu-list a {
+.primary-menu-list a{
+    justify-content: space-between;
     list-style: none;
     margin: 0;
     padding: 0;
@@ -128,7 +143,6 @@ input:focus, textarea:focus, button:focus {
     text-decoration: none !important;
     background: transparent !important;
     color: #000 !important;
-    margin-left: 35px;
 }
 .logo-menu-openanim {
     z-index: 500;
@@ -152,7 +166,7 @@ input:focus, textarea:focus, button:focus {
 .site-footer {
     height: 40px; 
     border-top: 1px solid #000000; 
-    margin: 0px !important;
+    margin: 30px 0px 0px 0px !important;
     padding-bottom: 10px !important;
     width: 100%;
     max-width: 100% !important;
@@ -180,7 +194,7 @@ input:focus, textarea:focus, button:focus {
     text-decoration: none !important;
     background: transparent !important;
     color: #000 !important;
-    font-family: 'Space Mono', monospace;
+    font-family: 'Sora', monospace !important;
     font-size: 16px;
     font-weight: 400;
     line-height: 23.7px;
@@ -191,6 +205,10 @@ input:focus, textarea:focus, button:focus {
 }
 .site-main {
     padding:0px !important;
+}
+.site-title {
+    font-family: 'Sora', monospace !important;
+    font-weight: 700;
 }
 /* The Modal (background) */
 .modal {
@@ -269,7 +287,7 @@ input:focus, textarea:focus, button:focus {
 /* Formulaire */
 .label {
     font-family: Poppins;
-    font-weight: 500;
+    font-weight: 400;
 }
 
 .wpcf7-form-control-wrap input, textarea
@@ -288,6 +306,189 @@ input:focus, textarea:focus, button:focus {
     font-weight: 400;
     text-decoration: none !important;
 }
+
+
+
+
+
+/* Gears décoration */
+.corner-nut {
+    position: fixed;
+    width: 750px; /* Ajustez la taille selon vos besoins */
+    height: 750px;
+    background-image: url('http://aymericbdev.local/wp-content/themes/twentytwentyone-child/assets-child/gear.png');
+    background-size: contain;
+    background-repeat: no-repeat;
+    z-index: 9999; /* Toujours au-dessus des autres éléments */
+    transform-origin: center;
+    pointer-events: none; /* L'utilisateur ne peut pas cliquer dessus */
+}
+
+/* Coins spécifiques */
+.top-left {
+    top: -500px;
+    left: -500px;
+}
+
+.top-right {
+    top: -500px;
+    right: -500px;
+}
+
+.bottom-left {
+    bottom: -500px;
+    left: -500px;
+}
+
+.bottom-right {
+    bottom: -500px;
+    right: -500px;
+}
+
+/* Animation par défaut (écrous immobiles si pas de scroll) */
+.corner-nut {
+    animation: none; /* Pas de rotation par défaut */
+    transition: transform 1s ease; /* Transition pour rendre l'animation plus fluide */
+}
+
+/* Animation pour tourner vers la droite */
+@keyframes rotate-right {
+    from {
+        transform: rotate(0deg);
+    }
+    to {
+        transform: rotate(200deg); /* 1 tour complet */
+    }
+}
+
+/* Animation pour tourner vers la gauche */
+@keyframes rotate-left {
+    from {
+        transform: rotate(200deg);
+    }
+    to {
+        transform: rotate(0deg); /* 1 tour complet dans le sens inverse */
+    }
+}
+
+/* Applique les animations */
+.corner-nut.rotate-right {
+    animation: rotate-right 1s linear forwards; /* 1 seconde pour un tour complet */
+}
+
+.corner-nut.rotate-left {
+    animation: rotate-left 1s linear forwards; /* 1 seconde pour un tour complet */
+}
+
+
+
+
+/* Gears container */
+.gears {
+    position: fixed;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    pointer-events: none; /* Les gears ne capturent pas les clics */
+}
+
+/* Individual gears */
+.gear {
+    height: 200px;
+    animation: rotate 2s linear infinite; /* Animation de rotation continue */
+}
+
+/* Positions spécifiques */
+.gear-left {
+    position: absolute;
+    right: 10%;
+    top: 20%;
+    transform: translateX(-200%);
+    transition: transform 1s ease-in-out;
+}
+
+.gear-right {
+    position: absolute;
+    right: 30%;
+    transform: translateX(200%);
+    transition: transform 1s ease-in-out;
+}
+
+/* Rotation animation */
+@keyframes rotate {
+    from {
+        transform: rotate(0deg);
+    }
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+/* --- ACCUEIL --- */
+.blocks-container {
+    display: flex;
+    justify-content: space-between; 
+    align-items: flex-end;
+    margin: 30px 20px;
+
+}
+
+.block {
+    width: 30%;
+    height: 500px;
+    border: double 8px #000; /* Double bordure épaisse de 8px */
+    border-radius: 20px; /* Coins arrondis de 20px */
+    background: rgba(255, 255, 255, 0.712); /* Arrière-plan semi-transparent */
+    color: black;
+    position: relative;
+    opacity: 0;
+    transition: transform 2s ease-out, opacity 1s ease-out;
+}
+
+/* Position initiale différente pour chaque bloc */
+#block1.visible {
+    transform: translateY(-300px);
+}
+#block2.visible {
+    transform: translateY(-200px);
+}
+#block3.visible {
+    transform: translateY(0px);
+}
+#block3 {
+    transform: translateY(-100px);
+}
+/* Contenu des blocs */
+.block .content {
+    opacity: 0;
+    transition: opacity 2s ease-in-out;
+    text-align: center;
+    padding: 20px;
+    background-color: rgba(255, 255, 255, 0.63);
+}
+
+/* Apparition des blocs */
+.block.visible {
+    transform: translateY(0);
+    opacity: 1;
+}
+
+/* Apparition du texte une fois le bloc stabilisé */
+.block.visible .content {
+    opacity: 1;
+}
+
+.block.visible h2 {
+    font-family: 'Sora', monospace;
+    font-size: 30px;
+    margin-bottom: 10px;
+}
+
+
+
+
 /* --- SIngle-photo CSS --- */
 .single-photo-container {
     display: flex;
@@ -446,25 +647,24 @@ input:focus, textarea:focus, button:focus {
 .hero {
     position: relative;
     width: 100%;
-    height: 100vh;
+    height: 80vh;
     background-size: cover;
     background-position: center;
     display: flex; 
     justify-content: center; 
     align-items: center;
+    margin-top: 0px;
 }
 .hero-content {
     text-align: center;
 }
 .hero h1 {
-    font-family: 'Space Mono', monospace;
+    font-family: 'Sora', monospace;
     font-size: 8vw;
-    font-style: italic;
     font-weight: 700;
     line-height: 1.2;
     color: transparent;
-    -webkit-text-stroke: 3px #FFFFFF;
-    white-space: nowrap; 
+    -webkit-text-stroke: 3px #000;
     overflow: hidden;
 }
 /* Catalogue Photo */
@@ -477,7 +677,7 @@ input:focus, textarea:focus, button:focus {
 .filter-container select {
     border: 1.3px solid #B8BBC2;
     font-family: 'Poppins', monospace;
-    font-weight: 500;
+    font-weight: 400;
     width: 260px;
     padding: 11px 18px;
     font-size: 14px;
