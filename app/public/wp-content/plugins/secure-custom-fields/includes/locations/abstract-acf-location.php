@@ -10,7 +10,7 @@ if ( ! class_exists( 'ACF_Location' ) ) :
 		/**
 		 * The location rule name.
 		 *
-		 * @since 5.9.0
+		 * @since ACF 5.9.0
 		 * @var string
 		 */
 		public $name = '';
@@ -18,7 +18,7 @@ if ( ! class_exists( 'ACF_Location' ) ) :
 		/**
 		 * The location rule label.
 		 *
-		 * @since 5.9.0
+		 * @since ACF 5.9.0
 		 * @var string
 		 */
 		public $label = '';
@@ -28,7 +28,7 @@ if ( ! class_exists( 'ACF_Location' ) ) :
 		 *
 		 * Accepts "post", "page", "user", "forms" or a custom label.
 		 *
-		 * @since 5.9.0
+		 * @since ACF 5.9.0
 		 * @var string
 		 */
 		public $category = 'post';
@@ -36,7 +36,7 @@ if ( ! class_exists( 'ACF_Location' ) ) :
 		/**
 		 * Whether or not the location rule is publicly accessible.
 		 *
-		 * @since 5.0.0
+		 * @since ACF 5.0.0
 		 * @var boolean
 		 */
 		public $public = true;
@@ -46,7 +46,7 @@ if ( ! class_exists( 'ACF_Location' ) ) :
 		 *
 		 * Accepts an object type discoverable by `acf_get_object_type()`.
 		 *
-		 * @since 5.9.0
+		 * @since ACF 5.9.0
 		 * @var string
 		 */
 		public $object_type = '';
@@ -56,7 +56,7 @@ if ( ! class_exists( 'ACF_Location' ) ) :
 		 *
 		 * Accepts a custom post type or custom taxonomy.
 		 *
-		 * @since 5.9.0
+		 * @since ACF 5.9.0
 		 * @var string
 		 */
 		public $object_subtype = '';
@@ -65,9 +65,8 @@ if ( ! class_exists( 'ACF_Location' ) ) :
 		 * Constructor.
 		 *
 		 * @date    8/4/20
-		 * @since   5.9.0
+		 * @since   ACF 5.9.0
 		 *
-		 * @param   void
 		 * @return  void
 		 */
 		public function __construct() {
@@ -81,9 +80,8 @@ if ( ! class_exists( 'ACF_Location' ) ) :
 		 * Initializes props.
 		 *
 		 * @date    5/03/2014
-		 * @since   5.0.0
+		 * @since   ACF 5.0.0
 		 *
-		 * @param   void
 		 * @return  void
 		 */
 		public function initialize() {
@@ -94,7 +92,7 @@ if ( ! class_exists( 'ACF_Location' ) ) :
 		 * Returns an array of operators for this location.
 		 *
 		 * @date    9/4/20
-		 * @since   5.9.0
+		 * @since   ACF 5.9.0
 		 *
 		 * @param   array $rule A location rule.
 		 * @return  array
@@ -110,7 +108,7 @@ if ( ! class_exists( 'ACF_Location' ) ) :
 		 * Returns an array of possible values for this location.
 		 *
 		 * @date    9/4/20
-		 * @since   5.9.0
+		 * @since   ACF 5.9.0
 		 *
 		 * @param   array $rule A location rule.
 		 * @return  array
@@ -123,7 +121,7 @@ if ( ! class_exists( 'ACF_Location' ) ) :
 		 * Returns the object_type connected to this location.
 		 *
 		 * @date    1/4/20
-		 * @since   5.9.0
+		 * @since   ACF 5.9.0
 		 *
 		 * @param   array $rule A location rule.
 		 * @return  string
@@ -136,7 +134,7 @@ if ( ! class_exists( 'ACF_Location' ) ) :
 		 * Returns the object_subtype connected to this location.
 		 *
 		 * @date    1/4/20
-		 * @since   5.9.0
+		 * @since   ACF 5.9.0
 		 *
 		 * @param   array $rule A location rule.
 		 * @return  string|array
@@ -149,7 +147,7 @@ if ( ! class_exists( 'ACF_Location' ) ) :
 		 * Matches the provided rule against the screen args returning a bool result.
 		 *
 		 * @date    9/4/20
-		 * @since   5.9.0
+		 * @since   ACF 5.9.0
 		 *
 		 * @param   array $rule        The location rule.
 		 * @param   array $screen      The screen args.
@@ -164,7 +162,7 @@ if ( ! class_exists( 'ACF_Location' ) ) :
 		 * Compares the given value and rule params returning true when they match.
 		 *
 		 * @date    17/9/19
-		 * @since   5.8.1
+		 * @since   ACF 5.8.1
 		 *
 		 * @param   array $rule  The location rule data.
 		 * @param   mixed $value The value to compare against.

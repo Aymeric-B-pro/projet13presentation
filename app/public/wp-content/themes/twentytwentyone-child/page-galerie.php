@@ -21,7 +21,6 @@ get_header();
                         'taxonomy' => 'langage',
                         'hide_empty' => true,
                     ));
-
                     foreach ($langages as $category) {
                         echo '<option value="' . esc_attr($category->term_id) . '">' . esc_html($category->name) . '</option>';
                     }
@@ -34,7 +33,6 @@ get_header();
                         'taxonomy' => 'projet',
                         'hide_empty' => true,
                     ));
-
                     foreach ($projets as $projet) {
                         echo '<option value="' . esc_attr($projet->term_id) . '">' . esc_html($projet->name) . '</option>';
                     }
@@ -74,5 +72,4 @@ get_header();
         </div>
     </section>
 </main>
-
 <?php get_footer(); ?>

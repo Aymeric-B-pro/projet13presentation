@@ -14,7 +14,7 @@
    *  Inserts a new __proto__ object compatibility layer
    *
    *  @date	15/2/18
-   *  @since	5.6.9
+   *  @since	ACF 5.6.9
    *
    *  @param	object instance The object to modify.
    *  @param	object compatibilty Optional. The compatibilty layer.
@@ -44,7 +44,7 @@
    *  Returns the compatibility layer for a given instance
    *
    *  @date	13/3/18
-   *  @since	5.6.9
+   *  @since	ACF 5.6.9
    *
    *  @param	object		instance		The object to look in.
    *  @return	object|null	compatibility	The compatibility object or null on failure.
@@ -60,7 +60,7 @@
    *  Compatibility layer for the acf object
    *
    *  @date	15/2/18
-   *  @since	5.6.9
+   *  @since	ACF 5.6.9
    *
    *  @param	void
    *  @return	void
@@ -224,7 +224,7 @@
    *  Using the acf.add_action() or acf.add_filter() functions will interpret new field parameters as jQuery $field
    *
    *  @date	12/5/18
-   *  @since	5.6.9
+   *  @since	ACF 5.6.9
    *
    *  @param	void
    *  @return	void
@@ -279,7 +279,7 @@
    *
    *  @type	object
    *  @date	8/09/2014
-   *  @since	5.0.0
+   *  @since	ACF 5.0.0
    *
    *  @param	(object)
    *  @return	(object)
@@ -401,7 +401,7 @@
    *
    *  @type	function
    *  @date	21/02/2014
-   *  @since	3.5.1
+   *  @since	ACF 3.5.1
    *
    *  @param	n/a
    *  @return	n/a
@@ -490,7 +490,7 @@
    *  description
    *
    *  @date	15/2/18
-   *  @since	5.6.9
+   *  @since	ACF 5.6.9
    *
    *  @param	type $var Description. Default.
    *  @return	type Description.
@@ -522,7 +522,7 @@
    *  description
    *
    *  @date	15/2/18
-   *  @since	5.6.9
+   *  @since	ACF 5.6.9
    *
    *  @param	type $var Description. Default.
    *  @return	type Description.
@@ -578,7 +578,7 @@
    *  description
    *
    *  @date	15/2/18
-   *  @since	5.6.9
+   *  @since	ACF 5.6.9
    *
    *  @param	type $var Description. Default.
    *  @return	type Description.
@@ -625,7 +625,7 @@
    *  description
    *
    *  @date	11/6/18
-   *  @since	5.6.9
+   *  @since	ACF 5.6.9
    *
    *  @param	type $var Description. Default.
    *  @return	type Description.
@@ -658,7 +658,7 @@
    *  description
    *
    *  @date	11/6/18
-   *  @since	5.6.9
+   *  @since	ACF 5.6.9
    *
    *  @param	type $var Description. Default.
    *  @return	type Description.
@@ -685,7 +685,7 @@
    *  description
    *
    *  @date	11/6/18
-   *  @since	5.6.9
+   *  @since	ACF 5.6.9
    *
    *  @param	type $var Description. Default.
    *  @return	type Description.
@@ -793,7 +793,7 @@
   /**
    *  Adds condition for Page Link having Page Link equal to.
    *
-   *  @since 6.3
+   *  @since ACF 6.3
    */
   var HasPageLink = acf.Condition.extend({
     type: 'hasPageLink',
@@ -812,7 +812,7 @@
   /**
    *  Adds condition for Page Link not equal to.
    *
-   *  @since 6.3
+   *  @since ACF 6.3
    */
   var HasPageLinkNotEqual = acf.Condition.extend({
     type: 'hasPageLinkNotEqual',
@@ -831,7 +831,7 @@
   /**
    *  Adds condition for Page Link containing a specific Page Link.
    *
-   *  @since 6.3
+   *  @since ACF 6.3
    */
   var containsPageLink = acf.Condition.extend({
     type: 'containsPageLink',
@@ -858,7 +858,7 @@
   /**
    *  Adds condition for Page Link not containing a specific Page Link.
    *
-   *  @since 6.3
+   *  @since ACF 6.3
    */
   var containsNotPageLink = acf.Condition.extend({
     type: 'containsNotPageLink',
@@ -885,7 +885,7 @@
   /**
    *  Adds condition for when any page link is selected.
    *
-   *  @since 6.3
+   *  @since ACF 6.3
    */
   var HasAnyPageLink = acf.Condition.extend({
     type: 'hasAnyPageLink',
@@ -908,7 +908,7 @@
   /**
    *  Adds condition for when no page link is selected.
    *
-   *  @since 6.3
+   *  @since ACF 6.3
    */
   var HasNoPageLink = acf.Condition.extend({
     type: 'hasNoPageLink',
@@ -931,7 +931,7 @@
   /**
    *  Adds condition for user field having user equal to.
    *
-   *  @since 6.3
+   *  @since ACF 6.3
    */
   var HasUser = acf.Condition.extend({
     type: 'hasUser',
@@ -950,7 +950,7 @@
   /**
    *  Adds condition for user field having user not equal to.
    *
-   *  @since 6.3
+   *  @since ACF 6.3
    */
   var HasUserNotEqual = acf.Condition.extend({
     type: 'hasUserNotEqual',
@@ -969,7 +969,7 @@
   /**
    *  Adds condition for user field containing a specific user.
    *
-   *  @since 6.3
+   *  @since ACF 6.3
    */
   var containsUser = acf.Condition.extend({
     type: 'containsUser',
@@ -996,7 +996,7 @@
   /**
    *  Adds condition for user field not containing a specific user.
    *
-   *  @since 6.3
+   *  @since ACF 6.3
    */
   var containsNotUser = acf.Condition.extend({
     type: 'containsNotUser',
@@ -1022,7 +1022,7 @@
   /**
    *  Adds condition for when any user is selected.
    *
-   *  @since 6.3
+   *  @since ACF 6.3
    */
   var HasAnyUser = acf.Condition.extend({
     type: 'hasAnyUser',
@@ -1045,7 +1045,7 @@
   /**
    *  Adds condition for when no user is selected.
    *
-   *  @since 6.3
+   *  @since ACF 6.3
    */
   var HasNoUser = acf.Condition.extend({
     type: 'hasNoUser',
@@ -1068,7 +1068,7 @@
   /**
    *  Adds condition for Relationship having Relationship equal to.
    *
-   *  @since	6.3
+   *  @since	ACF 6.3
    */
   var HasRelationship = acf.Condition.extend({
     type: 'hasRelationship',
@@ -1087,7 +1087,7 @@
   /**
    *  Adds condition for selection having Relationship not equal to.
    *
-   *  @since	6.3
+   *  @since	ACF 6.3
    */
   var HasRelationshipNotEqual = acf.Condition.extend({
     type: 'hasRelationshipNotEqual',
@@ -1106,7 +1106,7 @@
   /**
    *  Adds condition for Relationship containing a specific Relationship.
    *
-   *  @since	6.3
+   *  @since	ACF 6.3
    */
   var containsRelationship = acf.Condition.extend({
     type: 'containsRelationship',
@@ -1132,7 +1132,7 @@
   /**
    *  Adds condition for Relationship not containing a specific Relationship.
    *
-   *  @since	6.3
+   *  @since	ACF 6.3
    */
   var containsNotRelationship = acf.Condition.extend({
     type: 'containsNotRelationship',
@@ -1158,7 +1158,7 @@
   /**
    *  Adds condition for when any relation is selected.
    *
-   *  @since 6.3
+   *  @since ACF 6.3
    */
   var HasAnyRelation = acf.Condition.extend({
     type: 'hasAnyRelation',
@@ -1181,7 +1181,7 @@
   /**
    *  Adds condition for when no relation is selected.
    *
-   *  @since 6.3
+   *  @since ACF 6.3
    */
   var HasNoRelation = acf.Condition.extend({
     type: 'hasNoRelation',
@@ -1204,7 +1204,7 @@
   /**
    *  Adds condition for having post equal to.
    *
-   *  @since 6.3
+   *  @since ACF 6.3
    */
   var HasPostObject = acf.Condition.extend({
     type: 'hasPostObject',
@@ -1223,7 +1223,7 @@
   /**
    *  Adds condition for selection having post not equal to.
    *
-   *  @since 6.3
+   *  @since ACF 6.3
    */
   var HasPostObjectNotEqual = acf.Condition.extend({
     type: 'hasPostObjectNotEqual',
@@ -1242,7 +1242,7 @@
   /**
    *  Adds condition for Relationship containing a specific Relationship.
    *
-   *  @since 6.3
+   *  @since ACF 6.3
    */
   var containsPostObject = acf.Condition.extend({
     type: 'containsPostObject',
@@ -1269,7 +1269,7 @@
   /**
    *  Adds condition for Relationship not containing a specific Relationship.
    *
-   *  @since 6.3
+   *  @since ACF 6.3
    */
   var containsNotPostObject = acf.Condition.extend({
     type: 'containsNotPostObject',
@@ -1296,7 +1296,7 @@
   /**
    *  Adds condition for when any post is selected.
    *
-   *  @since 6.3
+   *  @since ACF 6.3
    */
   var HasAnyPostObject = acf.Condition.extend({
     type: 'hasAnyPostObject',
@@ -1319,7 +1319,7 @@
   /**
    *  Adds condition for when no post is selected.
    *
-   *  @since 6.3
+   *  @since ACF 6.3
    */
   var HasNoPostObject = acf.Condition.extend({
     type: 'hasNoPostObject',
@@ -1342,7 +1342,7 @@
   /**
    *  Adds condition for taxonomy having term equal to.
    *
-   *  @since	6.3
+   *  @since	ACF 6.3
    */
   var HasTerm = acf.Condition.extend({
     type: 'hasTerm',
@@ -1361,7 +1361,7 @@
   /**
    *  Adds condition for taxonomy having term not equal to.
    *
-   *  @since	6.3
+   *  @since	ACF 6.3
    */
   var hasTermNotEqual = acf.Condition.extend({
     type: 'hasTermNotEqual',
@@ -1380,7 +1380,7 @@
   /**
    *  Adds condition for taxonomy containing a specific term.
    *
-   *  @since	6.3
+   *  @since	ACF 6.3
    */
   var containsTerm = acf.Condition.extend({
     type: 'containsTerm',
@@ -1405,7 +1405,7 @@
   /**
    *  Adds condition for taxonomy not containing a specific term.
    *
-   *  @since	6.3
+   *  @since	ACF 6.3
    */
   var containsNotTerm = acf.Condition.extend({
     type: 'containsNotTerm',
@@ -1430,7 +1430,7 @@
   /**
    *  Adds condition for when any term is selected.
    *
-   *  @since	6.3
+   *  @since	ACF 6.3
    */
   var HasAnyTerm = acf.Condition.extend({
     type: 'hasAnyTerm',
@@ -1453,7 +1453,7 @@
   /**
    *  Adds condition for when no term is selected.
    *
-   *  @since	6.3
+   *  @since	ACF 6.3
    */
   var HasNoTerm = acf.Condition.extend({
     type: 'hasNoTerm',
@@ -1477,7 +1477,7 @@
    *  hasValue
    *
    *  @date	1/2/18
-   *  @since	5.6.5
+   *  @since	ACF 5.6.5
    *
    *  @param	void
    *  @return	void
@@ -1504,7 +1504,7 @@
    *  hasValue
    *
    *  @date	1/2/18
-   *  @since	5.6.5
+   *  @since	ACF 5.6.5
    *
    *  @param	void
    *  @return	void
@@ -1523,7 +1523,7 @@
    *  EqualTo
    *
    *  @date	1/2/18
-   *  @since	5.6.5
+   *  @since	ACF 5.6.5
    *
    *  @param	void
    *  @return	void
@@ -1550,7 +1550,7 @@
    *  NotEqualTo
    *
    *  @date	1/2/18
-   *  @since	5.6.5
+   *  @since	ACF 5.6.5
    *
    *  @param	void
    *  @return	void
@@ -1569,7 +1569,7 @@
    *  PatternMatch
    *
    *  @date	1/2/18
-   *  @since	5.6.5
+   *  @since	ACF 5.6.5
    *
    *  @param	void
    *  @return	void
@@ -1592,7 +1592,7 @@
    *  Contains
    *
    *  @date	1/2/18
-   *  @since	5.6.5
+   *  @since	ACF 5.6.5
    *
    *  @param	void
    *  @return	void
@@ -1615,7 +1615,7 @@
    *  TrueFalseEqualTo
    *
    *  @date	1/2/18
-   *  @since	5.6.5
+   *  @since	ACF 5.6.5
    *
    *  @param	void
    *  @return	void
@@ -1637,7 +1637,7 @@
    *  TrueFalseNotEqualTo
    *
    *  @date	1/2/18
-   *  @since	5.6.5
+   *  @since	ACF 5.6.5
    *
    *  @param	void
    *  @return	void
@@ -1659,7 +1659,7 @@
    *  SelectEqualTo
    *
    *  @date	1/2/18
-   *  @since	5.6.5
+   *  @since	ACF 5.6.5
    *
    *  @param	void
    *  @return	void
@@ -1715,7 +1715,7 @@
    *  SelectNotEqualTo
    *
    *  @date	1/2/18
-   *  @since	5.6.5
+   *  @since	ACF 5.6.5
    *
    *  @param	void
    *  @return	void
@@ -1734,7 +1734,7 @@
    *  GreaterThan
    *
    *  @date	1/2/18
-   *  @since	5.6.5
+   *  @since	ACF 5.6.5
    *
    *  @param	void
    *  @return	void
@@ -1761,7 +1761,7 @@
    *  LessThan
    *
    *  @date	1/2/18
-   *  @since	5.6.5
+   *  @since	ACF 5.6.5
    *
    *  @param	void
    *  @return	void
@@ -1790,7 +1790,7 @@
    *  SelectedGreaterThan
    *
    *  @date	1/2/18
-   *  @since	5.6.5
+   *  @since	ACF 5.6.5
    *
    *  @param	void
    *  @return	void
@@ -1806,7 +1806,7 @@
    *  SelectionLessThan
    *
    *  @date	1/2/18
-   *  @since	5.6.5
+   *  @since	ACF 5.6.5
    *
    *  @param	void
    *  @return	void
@@ -1837,7 +1837,7 @@
    *  description
    *
    *  @date	23/3/18
-   *  @since	5.6.9
+   *  @since	ACF 5.6.9
    *
    *  @param	type $var Description. Default.
    *  @return	type Description.
@@ -1894,7 +1894,7 @@
    *  description
    *
    *  @date	1/2/18
-   *  @since	5.6.5
+   *  @since	ACF 5.6.5
    *
    *  @param	type $var Description. Default.
    *  @return	type Description.
@@ -1947,7 +1947,7 @@
    *  Calculates the model ID for a field type
    *
    *  @date	15/12/17
-   *  @since	5.6.5
+   *  @since	ACF 5.6.5
    *
    *  @param	string type
    *  @return	string
@@ -1963,7 +1963,7 @@
    *  description
    *
    *  @date	1/2/18
-   *  @since	5.6.5
+   *  @since	ACF 5.6.5
    *
    *  @param	type $var Description. Default.
    *  @return	type Description.
@@ -1988,7 +1988,7 @@
    *  description
    *
    *  @date	1/2/18
-   *  @since	5.6.5
+   *  @since	ACF 5.6.5
    *
    *  @param	type $var Description. Default.
    *  @return	type Description.
@@ -2005,7 +2005,7 @@
    *  description
    *
    *  @date	1/2/18
-   *  @since	5.6.5
+   *  @since	ACF 5.6.5
    *
    *  @param	type $var Description. Default.
    *  @return	type Description.
@@ -2027,7 +2027,7 @@
    *  description
    *
    *  @date	1/2/18
-   *  @since	5.6.5
+   *  @since	ACF 5.6.5
    *
    *  @param	type $var Description. Default.
    *  @return	type Description.
@@ -2087,7 +2087,7 @@
    *  description
    *
    *  @date	1/2/18
-   *  @since	5.6.5
+   *  @since	ACF 5.6.5
    *
    *  @param	type $var Description. Default.
    *  @return	type Description.
@@ -2114,7 +2114,7 @@
    *  Finds a field that is related to another field
    *
    *  @date	1/2/18
-   *  @since	5.6.5
+   *  @since	ACF 5.6.5
    *
    *  @param	type $var Description. Default.
    *  @return	type Description.
@@ -2191,7 +2191,7 @@
    *  Returns the field's conditions instance
    *
    *  @date	1/2/18
-   *  @since	5.6.5
+   *  @since	ACF 5.6.5
    *
    *  @param	type $var Description. Default.
    *  @return	type Description.
@@ -2213,7 +2213,7 @@
    *  description
    *
    *  @date	1/2/18
-   *  @since	5.6.5
+   *  @since	ACF 5.6.5
    *
    *  @param	type $var Description. Default.
    *  @return	type Description.
@@ -2476,7 +2476,7 @@
    *  Events manager for the acf accordion
    *
    *  @date	14/2/18
-   *  @since	5.6.9
+   *  @since	ACF 5.6.9
    *
    *  @param	void
    *  @return	void
@@ -3248,7 +3248,7 @@
        * Fires immediately after the value has changed.
        *
        * @date	12/02/2014
-       * @since	5.0.0
+       * @since	ACF 5.0.0
        *
        * @param	object|string val The new value.
        * @param	object map The Google Map isntance.
@@ -3374,7 +3374,7 @@
        * Fires immediately after the Google Map has been initialized.
        *
        * @date	12/02/2014
-       * @since	5.0.0
+       * @since	ACF 5.0.0
        *
        * @param	object map The Google Map isntance.
        * @param	object marker The Google Map marker isntance.
@@ -3555,7 +3555,7 @@
      * Returns location data for the given GeocoderResult object.
      *
      * @date	15/10/19
-     * @since	5.8.6
+     * @since	ACF 5.8.6
      *
      * @param	object obj A GeocoderResult object.
      * @return	object
@@ -3617,7 +3617,7 @@
        * Filters the parsed result.
        *
        * @date	18/10/19
-       * @since	5.8.6
+       * @since	ACF 5.8.6
        *
        * @param	object result The parsed result value.
        * @param	object obj The GeocoderResult object.
@@ -3678,7 +3678,7 @@
    * Loads the Google Maps API library and troggers callback.
    *
    * @date	28/3/19
-   * @since	5.7.14
+   * @since	ACF 5.7.14
    *
    * @param	function callback The callback to excecute.
    * @return	void
@@ -5254,7 +5254,7 @@
    *  description
    *
    *  @date	8/2/18
-   *  @since	5.6.5
+   *  @since	ACF 5.6.5
    *
    *  @param	type $var Description. Default.
    *  @return	type Description.
@@ -6228,7 +6228,7 @@
    *  description
    *
    *  @date	23/3/18
-   *  @since	5.6.9
+   *  @since	ACF 5.6.9
    *
    *  @param	type $var Description. Default.
    *  @return	type Description.
@@ -6247,7 +6247,7 @@
      *  Called during the constructor function to setup this field ready for initialization
      *
      *  @date	8/5/18
-     *  @since	5.6.9
+     *  @since	ACF 5.6.9
      *
      *  @param	jQuery $field The field element.
      *  @return	void
@@ -6269,7 +6269,7 @@
      *  Sets or returns the field's value
      *
      *  @date	8/5/18
-     *  @since	5.6.9
+     *  @since	ACF 5.6.9
      *
      *  @param	mixed val Optional. The value to set
      *  @return	mixed
@@ -6291,7 +6291,7 @@
      *  returns the field's value
      *
      *  @date	8/5/18
-     *  @since	5.6.9
+     *  @since	ACF 5.6.9
      *
      *  @param	void
      *  @return	mixed
@@ -6306,7 +6306,7 @@
      *  sets the field's value and returns true if changed
      *
      *  @date	8/5/18
-     *  @since	5.6.9
+     *  @since	ACF 5.6.9
      *
      *  @param	mixed val
      *  @return	boolean. True if changed.
@@ -6321,7 +6321,7 @@
      *  i18n helper to be removed
      *
      *  @date	8/5/18
-     *  @since	5.6.9
+     *  @since	ACF 5.6.9
      *
      *  @param	type $var Description. Default.
      *  @return	type Description.
@@ -6336,7 +6336,7 @@
      *  returns the control jQuery element used for inheriting data. Uses this.control setting.
      *
      *  @date	8/5/18
-     *  @since	5.6.9
+     *  @since	ACF 5.6.9
      *
      *  @param	void
      *  @return	jQuery
@@ -6351,7 +6351,7 @@
      *  returns the input jQuery element used for saving values. Uses this.input setting.
      *
      *  @date	8/5/18
-     *  @since	5.6.9
+     *  @since	ACF 5.6.9
      *
      *  @param	void
      *  @return	jQuery
@@ -6366,7 +6366,7 @@
      *  description
      *
      *  @date	12/5/18
-     *  @since	5.6.9
+     *  @since	ACF 5.6.9
      *
      *  @param	type $var Description. Default.
      *  @return	type Description.
@@ -6381,7 +6381,7 @@
      *  description
      *
      *  @date	12/5/18
-     *  @since	5.6.9
+     *  @since	ACF 5.6.9
      *
      *  @param	type $var Description. Default.
      *  @return	type Description.
@@ -6396,7 +6396,7 @@
      *  Returns the field's input name
      *
      *  @date	8/5/18
-     *  @since	5.6.9
+     *  @since	ACF 5.6.9
      *
      *  @param	void
      *  @return	string
@@ -6411,7 +6411,7 @@
      *  returns the field's parent field or false on failure.
      *
      *  @date	8/5/18
-     *  @since	5.6.9
+     *  @since	ACF 5.6.9
      *
      *  @param	void
      *  @return	object|false
@@ -6430,7 +6430,7 @@
      *  description
      *
      *  @date	9/7/18
-     *  @since	5.6.9
+     *  @since	ACF 5.6.9
      *
      *  @param	type $var Description. Default.
      *  @return	type Description.
@@ -6596,7 +6596,7 @@
    *  description
    *
    *  @date	14/12/17
-   *  @since	5.6.5
+   *  @since	ACF 5.6.5
    *
    *  @param	type $var Description. Default.
    *  @return	type Description.
@@ -6624,7 +6624,7 @@
    *  Calculates the model ID for a field type
    *
    *  @date	15/12/17
-   *  @since	5.6.5
+   *  @since	ACF 5.6.5
    *
    *  @param	string type
    *  @return	string
@@ -6640,7 +6640,7 @@
    *  description
    *
    *  @date	14/12/17
-   *  @since	5.6.5
+   *  @since	ACF 5.6.5
    *
    *  @param	type $var Description. Default.
    *  @return	type Description.
@@ -6665,7 +6665,7 @@
    *  description
    *
    *  @date	1/2/18
-   *  @since	5.6.5
+   *  @since	ACF 5.6.5
    *
    *  @param	type $var Description. Default.
    *  @return	type Description.
@@ -6682,7 +6682,7 @@
    *  description
    *
    *  @date	1/2/18
-   *  @since	5.6.5
+   *  @since	ACF 5.6.5
    *
    *  @param	type $var Description. Default.
    *  @return	type Description.
@@ -6733,7 +6733,7 @@
    *  Returns a jQuery selection object of acf fields.
    *
    *  @date	14/12/17
-   *  @since	5.6.5
+   *  @since	ACF 5.6.5
    *
    *  @param	object $args {
    *		Optional. Arguments to find fields.
@@ -6836,7 +6836,7 @@
    *  Finds a specific field with jQuery
    *
    *  @date	14/12/17
-   *  @since	5.6.5
+   *  @since	ACF 5.6.5
    *
    *  @param	string key 		The field's key.
    *  @param	jQuery $parent	jQuery element to search within.
@@ -6858,7 +6858,7 @@
    *  Returns a field instance
    *
    *  @date	14/12/17
-   *  @since	5.6.5
+   *  @since	ACF 5.6.5
    *
    *  @param	jQuery|string $field	jQuery element or field key.
    *  @return	object
@@ -6888,7 +6888,7 @@
    *  Returns multiple field instances
    *
    *  @date	14/12/17
-   *  @since	5.6.5
+   *  @since	ACF 5.6.5
    *
    *  @param	jQuery|object $fields	jQuery elements or query args.
    *  @return	array
@@ -6919,7 +6919,7 @@
    *  Returns the closest jQuery field element
    *
    *  @date	9/4/18
-   *  @since	5.6.9
+   *  @since	ACF 5.6.9
    *
    *  @param	jQuery $el
    *  @return	jQuery
@@ -6935,7 +6935,7 @@
    *  Returns the closest field instance
    *
    *  @date	22/1/18
-   *  @since	5.6.5
+   *  @since	ACF 5.6.5
    *
    *  @param	jQuery $el
    *  @return	object
@@ -6952,7 +6952,7 @@
    *  Sets up callback logic for global field actions
    *
    *  @date	15/6/18
-   *  @since	5.6.9
+   *  @since	ACF 5.6.9
    *
    *  @param	string action
    *  @return	void
@@ -7017,7 +7017,7 @@
    *  Sets up callback logic for single field actions
    *
    *  @date	15/6/18
-   *  @since	5.6.9
+   *  @since	ACF 5.6.9
    *
    *  @param	string action
    *  @return	void
@@ -7072,7 +7072,7 @@
    *  Manages field actions and events
    *
    *  @date	15/12/17
-   *  @since	5.6.5
+   *  @since	ACF 5.6.5
    *
    *  @param	void
    *  @param	void
@@ -7144,7 +7144,7 @@
    *  description
    *
    *  @date	1/7/18
-   *  @since	5.6.9
+   *  @since	ACF 5.6.9
    *
    *  @param	type $var Description. Default.
    *  @return	type Description.
@@ -7171,7 +7171,7 @@
    * Adds compatiblity for the 'unmount' and 'remount' actions added in 5.8.0
    *
    * @date	7/3/19
-   * @since	5.7.14
+   * @since	ACF 5.7.14
    *
    * @param	void
    * @return	void
@@ -7196,7 +7196,7 @@
    *  Adds compatibility for sorting a <tr> element
    *
    *  @date	6/3/18
-   *  @since	5.6.9
+   *  @since	ACF 5.6.9
    *
    *  @param	void
    *  @return	void
@@ -7236,7 +7236,7 @@
    *  Fixes browser bugs when duplicating an element
    *
    *  @date	6/3/18
-   *  @since	5.6.9
+   *  @since	ACF 5.6.9
    *
    *  @param	void
    *  @return	void
@@ -7266,7 +7266,7 @@
    *  description
    *
    *  @date	6/3/18
-   *  @since	5.6.9
+   *  @since	ACF 5.6.9
    *
    *  @param	type $var Description. Default.
    *  @return	type Description.
@@ -7369,7 +7369,7 @@
    *  description
    *
    *  @date	6/3/18
-   *  @since	5.6.9
+   *  @since	ACF 5.6.9
    *
    *  @param	type $var Description. Default.
    *  @return	type Description.
@@ -7479,7 +7479,7 @@
    * Adds a body class when holding down the "shift" key.
    *
    * @date	06/05/2020
-   * @since	5.9.0
+   * @since	ACF 5.9.0
    */
   var bodyClassShiftHelper = new acf.Model({
     id: 'bodyClassShiftHelper',
@@ -7518,7 +7518,7 @@
    *  description
    *
    *  @date	10/1/18
-   *  @since	5.6.5
+   *  @since	ACF 5.6.5
    *
    *  @param	type $var Description. Default.
    *  @return	type Description.
@@ -7582,7 +7582,7 @@
    *  description
    *
    *  @date	10/1/18
-   *  @since	5.6.5
+   *  @since	ACF 5.6.5
    *
    *  @param	type $var Description. Default.
    *  @return	type Description.
@@ -7599,7 +7599,7 @@
    *  description
    *
    *  @date	11/1/18
-   *  @since	5.6.5
+   *  @since	ACF 5.6.5
    *
    *  @param	type $var Description. Default.
    *  @return	type Description.
@@ -7634,7 +7634,7 @@
    *  description
    *
    *  @date	10/1/18
-   *  @since	5.6.5
+   *  @since	ACF 5.6.5
    *
    *  @param	type $var Description. Default.
    *  @return	type Description.
@@ -7808,7 +7808,7 @@
    *  description
    *
    *  @date	10/1/18
-   *  @since	5.6.5
+   *  @since	ACF 5.6.5
    *
    *  @param	type $var Description. Default.
    *  @return	type Description.
@@ -7949,7 +7949,7 @@
    *  description
    *
    *  @date	10/1/18
-   *  @since	5.6.5
+   *  @since	ACF 5.6.5
    *
    *  @param	type $var Description. Default.
    *  @return	type Description.
@@ -7995,7 +7995,7 @@
    *  description
    *
    *  @date	11/1/18
-   *  @since	5.6.5
+   *  @since	ACF 5.6.5
    *
    *  @param	type $var Description. Default.
    *  @return	type Description.
@@ -8204,7 +8204,7 @@
          *
          *  @type	function
          *  @date	29/09/2016
-         *  @since	5.4.0
+         *  @since	ACF 5.4.0
          *
          *  @param	options (object)
          *  @return	n/a
@@ -8274,7 +8274,7 @@
    * Manages postboxes on the screen.
    *
    * @date	25/5/19
-   * @since	5.8.1
+   * @since	ACF 5.8.1
    *
    * @param	void
    * @return	void
@@ -8293,7 +8293,7 @@
    *  Returns a postbox instance.
    *
    *  @date	23/9/18
-   *  @since	5.7.7
+   *  @since	ACF 5.7.7
    *
    *  @param	mixed $el Either a jQuery element or the postbox id.
    *  @return	object
@@ -8314,7 +8314,7 @@
    *  Returns an array of postbox instances.
    *
    *  @date	23/9/18
-   *  @since	5.7.7
+   *  @since	ACF 5.7.7
    *
    *  @param	void
    *  @return	array
@@ -8329,7 +8329,7 @@
    *  Returns a new postbox instance for the given props.
    *
    *  @date	20/9/18
-   *  @since	5.7.6
+   *  @since	ACF 5.7.6
    *
    *  @param	object props The postbox properties.
    *  @return	object
@@ -8344,7 +8344,7 @@
    *  The postbox model.
    *
    *  @date	20/9/18
-   *  @since	5.7.6
+   *  @since	ACF 5.7.6
    *
    *  @param	void
    *  @return	void
@@ -8873,7 +8873,7 @@
    *  Adds compatibility with the Gutenberg edit screen.
    *
    *  @date	11/12/18
-   *  @since	5.8.0
+   *  @since	ACF 5.8.0
    *
    *  @param	void
    *  @return	void
@@ -8972,7 +8972,7 @@
      * Fires after the Post edit screen metaboxs are refreshed to update the Block Editor API state.
      *
      * @date	11/11/19
-     * @since	5.8.7
+     * @since	ACF 5.8.7
      *
      * @param	object data The "check_screen" JSON response data.
      * @return	void
@@ -9039,7 +9039,7 @@
    *  description
    *
    *  @date	13/1/18
-   *  @since	5.6.5
+   *  @since	ACF 5.6.5
    *
    *  @param	type $var Description. Default.
    *  @return	type Description.
@@ -9087,7 +9087,7 @@
    *  description
    *
    *  @date	13/1/18
-   *  @since	5.6.5
+   *  @since	ACF 5.6.5
    *
    *  @param	type $var Description. Default.
    *  @return	type Description.
@@ -9114,7 +9114,7 @@
    *  description
    *
    *  @date	13/1/18
-   *  @since	5.6.5
+   *  @since	ACF 5.6.5
    *
    *  @param	type $var Description. Default.
    *  @return	type Description.
@@ -9309,7 +9309,7 @@
    *  description
    *
    *  @date	13/1/18
-   *  @since	5.6.5
+   *  @since	ACF 5.6.5
    *
    *  @param	type $var Description. Default.
    *  @return	type Description.
@@ -9491,7 +9491,7 @@
    *  description
    *
    *  @date	13/1/18
-   *  @since	5.6.5
+   *  @since	ACF 5.6.5
    *
    *  @param	type $var Description. Default.
    *  @return	type Description.
@@ -9838,7 +9838,7 @@
      *
      *  @type	function
      *  @date	18/8/17
-     *  @since	5.6.0
+     *  @since	ACF 5.6.0
      *
      *  @param	$post_id (int)
      *  @return	$post_id (int)
@@ -9864,7 +9864,7 @@
      *
      *  @type	function
      *  @date	18/8/17
-     *  @since	5.6.0
+     *  @since	ACF 5.6.0
      *
      *  @param	$post_id (int)
      *  @return	$post_id (int)
@@ -9898,7 +9898,7 @@
      *
      *  @type	function
      *  @date	18/8/17
-     *  @since	5.6.0
+     *  @since	ACF 5.6.0
      *
      *  @param	$post_id (int)
      *  @return	$post_id (int)
@@ -10000,7 +10000,7 @@
      *
      *  @type	function
      *  @date	18/8/17
-     *  @since	5.6.0
+     *  @since	ACF 5.6.0
      *
      *  @param	$post_id (int)
      *  @return	$post_id (int)
@@ -10047,7 +10047,7 @@
      *
      *  @type	function
      *  @date	18/8/17
-     *  @since	5.6.0
+     *  @since	ACF 5.6.0
      *
      *  @param	$post_id (int)
      *  @return	$post_id (int)
@@ -10270,7 +10270,7 @@
    *  The model for validating forms
    *
    *  @date	4/9/18
-   *  @since	5.7.5
+   *  @since	ACF 5.7.5
    *
    *  @param	void
    *  @return	void
@@ -10297,7 +10297,7 @@
      *  Adds errors to the form.
      *
      *  @date	4/9/18
-     *  @since	5.7.5
+     *  @since	ACF 5.7.5
      *
      *  @param	array errors An array of errors.
      *  @return	void
@@ -10311,7 +10311,7 @@
      *  Adds and error to the form.
      *
      *  @date	4/9/18
-     *  @since	5.7.5
+     *  @since	ACF 5.7.5
      *
      *  @param	object error An error object containing input and message.
      *  @return	void
@@ -10325,7 +10325,7 @@
      *  Returns true if the form has errors.
      *
      *  @date	4/9/18
-     *  @since	5.7.5
+     *  @since	ACF 5.7.5
      *
      *  @param	void
      *  @return	bool
@@ -10339,7 +10339,7 @@
      *  Removes any errors.
      *
      *  @date	4/9/18
-     *  @since	5.7.5
+     *  @since	ACF 5.7.5
      *
      *  @param	void
      *  @return	void
@@ -10353,7 +10353,7 @@
      *  Returns the forms errors.
      *
      *  @date	4/9/18
-     *  @since	5.7.5
+     *  @since	ACF 5.7.5
      *
      *  @param	void
      *  @return	array
@@ -10367,7 +10367,7 @@
      *  Returns the forms field errors.
      *
      *  @date	4/9/18
-     *  @since	5.7.5
+     *  @since	ACF 5.7.5
      *
      *  @param	void
      *  @return	array
@@ -10403,7 +10403,7 @@
      *  Returns the forms global errors (errors without a specific input).
      *
      *  @date	4/9/18
-     *  @since	5.7.5
+     *  @since	ACF 5.7.5
      *
      *  @param	void
      *  @return	array
@@ -10419,7 +10419,7 @@
      *
      *  Displays all errors for this form.
      *
-     *  @since	5.7.5
+     *  @since	ACF 5.7.5
      *
      *  @param	{string} [location=before] - The location to add the error, before or after the input. Default before. Since 6.3.
      *  @return	void
@@ -10520,7 +10520,7 @@
      *  Update the form class when changing the 'status' data
      *
      *  @date	4/9/18
-     *  @since	5.7.5
+     *  @since	ACF 5.7.5
      *
      *  @param	object e The event object.
      *  @param	jQuery $el The form element.
@@ -10537,7 +10537,7 @@
      *  Vaildates the form via AJAX.
      *
      *  @date	4/9/18
-     *  @since	5.7.5
+     *  @since	ACF 5.7.5
      *
      *  @param	object args A list of settings to customize the validation process.
      *  @return	bool True if the form is valid.
@@ -10692,7 +10692,7 @@
      *  Called during the constructor function to setup this instance
      *
      *  @date	4/9/18
-     *  @since	5.7.5
+     *  @since	ACF 5.7.5
      *
      *  @param	jQuery $form The form element.
      *  @return	void
@@ -10707,7 +10707,7 @@
      *  Rests the validation to be used again.
      *
      *  @date	6/9/18
-     *  @since	5.7.5
+     *  @since	ACF 5.7.5
      *
      *  @param	void
      *  @return	void
@@ -10729,7 +10729,7 @@
    *  Returns the instance for a given form element.
    *
    *  @date	4/9/18
-   *  @since	5.7.5
+   *  @since	ACF 5.7.5
    *
    *  @param	jQuery $el The form element.
    *  @return	object
@@ -10748,7 +10748,7 @@
   /**
    *  A helper function to generate a Validator for a block form, so .addErrors can be run via block logic.
    *
-   *  @since	6.3
+   *  @since	ACF 6.3
    *
    *  @param $el The jQuery block form wrapper element.
    *  @return bool
@@ -10761,7 +10761,7 @@
    *  A helper function for the Validator.validate() function.
    *  Returns true if form is valid, or fetches a validation request and returns false.
    *
-   *  @since	5.6.9
+   *  @since	ACF 5.6.9
    *
    *  @param	object args A list of settings to customize the validation process.
    *  @return	bool
@@ -10776,7 +10776,7 @@
    *  Enables a submit button and returns the element.
    *
    *  @date	30/8/18
-   *  @since	5.7.4
+   *  @since	ACF 5.7.4
    *
    *  @param	jQuery $submit The submit button.
    *  @return	jQuery
@@ -10791,7 +10791,7 @@
    *  Disables a submit button and returns the element.
    *
    *  @date	30/8/18
-   *  @since	5.7.4
+   *  @since	ACF 5.7.4
    *
    *  @param	jQuery $submit The submit button.
    *  @return	jQuery
@@ -10806,7 +10806,7 @@
    *  Shows the spinner element.
    *
    *  @date	4/9/18
-   *  @since	5.7.5
+   *  @since	ACF 5.7.5
    *
    *  @param	jQuery $spinner The spinner element.
    *  @return	jQuery
@@ -10823,7 +10823,7 @@
    *  Hides the spinner element.
    *
    *  @date	4/9/18
-   *  @since	5.7.5
+   *  @since	ACF 5.7.5
    *
    *  @param	jQuery $spinner The spinner element.
    *  @return	jQuery
@@ -10840,7 +10840,7 @@
    *  Locks a form by disabeling its primary inputs and showing a spinner.
    *
    *  @date	4/9/18
-   *  @since	5.7.5
+   *  @since	ACF 5.7.5
    *
    *  @param	jQuery $form The form element.
    *  @return	jQuery
@@ -10866,7 +10866,7 @@
    *  Unlocks a form by enabeling its primary inputs and hiding all spinners.
    *
    *  @date	4/9/18
-   *  @since	5.7.5
+   *  @since	ACF 5.7.5
    *
    *  @param	jQuery $form The form element.
    *  @return	jQuery
@@ -10889,7 +10889,7 @@
    *  An internal function to find the 'primary' form submit wrapping element.
    *
    *  @date	4/9/18
-   *  @since	5.7.5
+   *  @since	ACF 5.7.5
    *
    *  @param	jQuery $form The form element.
    *  @return	jQuery
@@ -10939,7 +10939,7 @@
    * A debounced function to trigger a form submission.
    *
    * @date	15/07/2020
-   * @since	5.9.0
+   * @since	ACF 5.9.0
    *
    * @param	type Var Description.
    * @return	type Description.
@@ -10952,7 +10952,7 @@
    * Ensure field is visible for validation errors
    *
    * @date	20/10/2021
-   * @since	5.11.0
+   * @since	ACF 5.11.0
    */
   var ensureFieldPostBoxIsVisible = function ($el) {
     // Find the postbox element containing this field.
@@ -10972,7 +10972,7 @@
    * Ensure metaboxes which contain browser validation failures are visible.
    *
    * @date	20/10/2021
-   * @since	5.11.0
+   * @since	ACF 5.11.0
    */
   var ensureInvalidFieldVisibility = function () {
     // Load each ACF input field and check it's browser validation state.
@@ -10991,7 +10991,7 @@
    *  Global validation logic
    *
    *  @date	4/4/18
-   *  @since	5.6.9
+   *  @since	ACF 5.6.9
    *
    *  @param	void
    *  @return	void
@@ -11023,7 +11023,7 @@
      *  Called when initializing the model.
      *
      *  @date	4/9/18
-     *  @since	5.7.5
+     *  @since	ACF 5.7.5
      *
      *  @param	void
      *  @return	void
@@ -11042,7 +11042,7 @@
      *  Enables validation.
      *
      *  @date	4/9/18
-     *  @since	5.7.5
+     *  @since	ACF 5.7.5
      *
      *  @param	void
      *  @return	void
@@ -11056,7 +11056,7 @@
      *  Disables validation.
      *
      *  @date	4/9/18
-     *  @since	5.7.5
+     *  @since	ACF 5.7.5
      *
      *  @param	void
      *  @return	void
@@ -11070,7 +11070,7 @@
      *  Rests the form validation to be used again
      *
      *  @date	6/9/18
-     *  @since	5.7.5
+     *  @since	ACF 5.7.5
      *
      *  @param	jQuery $form The form element.
      *  @return	void
@@ -11084,7 +11084,7 @@
      *  Adds 'invalid' event listeners to HTML inputs.
      *
      *  @date	4/9/18
-     *  @since	5.7.5
+     *  @since	ACF 5.7.5
      *
      *  @param	jQuery $el The element being added / readied.
      *  @return	void
@@ -11107,7 +11107,7 @@
      *  Callback for the 'invalid' event.
      *
      *  @date	4/9/18
-     *  @since	5.7.5
+     *  @since	ACF 5.7.5
      *
      *  @param	object e The event object.
      *  @param	jQuery $el The input element.
@@ -11141,7 +11141,7 @@
      *  Callback when clicking submit.
      *
      *  @date	4/9/18
-     *  @since	5.7.5
+     *  @since	ACF 5.7.5
      *
      *  @param	object e The event object.
      *  @param	jQuery $el The input element.
@@ -11161,7 +11161,7 @@
      *  Set ignore to true when saving a draft.
      *
      *  @date	4/9/18
-     *  @since	5.7.5
+     *  @since	ACF 5.7.5
      *
      *  @param	object e The event object.
      *  @param	jQuery $el The input element.
@@ -11176,7 +11176,7 @@
      * Callback when the 'post' form is submit.
      *
      * @date	5/3/19
-     * @since	5.7.13
+     * @since	ACF 5.7.13
      *
      * @param	object e The event object.
      * @param	jQuery $el The input element.
@@ -11198,7 +11198,7 @@
      *  Callback when the form is submit.
      *
      *  @date	4/9/18
-     *  @since	5.7.5
+     *  @since	ACF 5.7.5
      *
      *  @param	object e The event object.
      *  @param	jQuery $el The input element.
@@ -11234,7 +11234,7 @@
      * Resets data during onSubmit when the form is allowed to submit.
      *
      * @date	5/3/19
-     * @since	5.7.13
+     * @since	ACF 5.7.13
      *
      * @param	void
      * @return	void

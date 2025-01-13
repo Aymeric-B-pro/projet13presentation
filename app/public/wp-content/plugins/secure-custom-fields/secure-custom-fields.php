@@ -1,18 +1,20 @@
-<?php
-
+<?php // phpcs:disable WordPress.Files.FileName.InvalidClassFileName -- This file contains procedural code for now.
+// phpcs:disable Universal.Files.SeparateFunctionsFromOO.Mixed -- This file contains both procedural and object-oriented code for now.
 /**
  * Secure Custom Fields
  *
  * Plugin Name:       Secure Custom Fields
  * Plugin URI:        http://wordpress.org/plugins/secure-custom-fields/
  * Description:       Secure Custom Fields (SCF) offers an intuitive way for developers to enhance WordPress content management by adding extra fields and options without coding requirements.
- * Version:           6.4.1-beta4
+ * Version:           6.4.1-beta6
  * Author:            WordPress.org
  * Author URI:        https://wordpress.org/
  * Text Domain:       secure-custom-fields
  * Domain Path:       /lang
  * Requires PHP:      7.4
  * Requires at least: 6.0
+ *
+ * @package wordpress/secure-custom-fields
  */
 
 if ( ! defined( 'ABSPATH' ) ) {
@@ -33,7 +35,7 @@ if ( ! class_exists( 'ACF' ) ) {
 		 *
 		 * @var string
 		 */
-		public $version = '6.4.1-beta4';
+		public $version = '6.4.1-beta6';
 
 		/**
 		 * The plugin settings array.
@@ -60,7 +62,7 @@ if ( ! class_exists( 'ACF' ) ) {
 		 * A dummy constructor to ensure ACF is only setup once.
 		 *
 		 * @date    23/06/12
-		 * @since   5.0.0
+		 * @since   ACF 5.0.0
 		 */
 		public function __construct() {
 			// Do nothing.
@@ -70,7 +72,7 @@ if ( ! class_exists( 'ACF' ) ) {
 		 * Sets up the ACF plugin.
 		 *
 		 * @date    28/09/13
-		 * @since   5.0.0
+		 * @since   ACF 5.0.0
 		 */
 		public function initialize() {
 
@@ -82,6 +84,7 @@ if ( ! class_exists( 'ACF' ) ) {
 			$this->define( 'ACF_MAJOR_VERSION', 6 );
 			$this->define( 'ACF_FIELD_API_VERSION', 5 );
 			$this->define( 'ACF_UPGRADE_VERSION', '5.5.0' ); // Highest version with an upgrade routine. See upgrades.php.
+			$this->define( 'ACF_PRO', true );
 
 			// Register activation hook.
 			register_activation_hook( __FILE__, array( $this, 'acf_plugin_activated' ) );
@@ -127,6 +130,7 @@ if ( ! class_exists( 'ACF' ) ) {
 				'enable_shortcode'        => true,
 				'enable_bidirection'      => true,
 				'enable_block_bindings'   => true,
+				'pro'                     => true,
 			);
 
 			// Include utility functions.
@@ -140,6 +144,7 @@ if ( ! class_exists( 'ACF' ) ) {
 			// Include classes.
 			acf_include( 'includes/class-acf-data.php' );
 			acf_include( 'includes/class-acf-internal-post-type.php' );
+			acf_include( 'includes/class-acf-options-page.php' );
 			acf_include( 'includes/class-acf-site-health.php' );
 			acf_include( 'includes/fields/class-acf-field.php' );
 			acf_include( 'includes/locations/abstract-acf-legacy-location.php' );
@@ -161,11 +166,12 @@ if ( ! class_exists( 'ACF' ) ) {
 			acf_include( 'includes/acf-value-functions.php' );
 			acf_include( 'includes/acf-input-functions.php' );
 			acf_include( 'includes/acf-wp-functions.php' );
+			acf_include( 'includes/scf-ui-options-page-functions.php' );
 
 			// Override the shortcode default value based on the version when installed.
 			$first_activated_version = acf_get_version_when_first_activated();
 
-			// Only enable shortcode by default for versions prior to 6.3
+			// Only enable shortcode by default for versions prior to 6.3.
 			if ( $first_activated_version && version_compare( $first_activated_version, '6.3', '>=' ) ) {
 				$this->settings['enable_shortcode'] = false;
 			}
@@ -186,6 +192,8 @@ if ( ! class_exists( 'ACF' ) ) {
 			acf_include( 'includes/upgrades.php' );
 			acf_include( 'includes/validation.php' );
 			acf_include( 'includes/rest-api.php' );
+			acf_include( 'includes/blocks.php' );
+			acf_include( 'includes/class-acf-options-page.php' );
 
 			// Include field group class.
 			acf_include( 'includes/post-types/class-acf-field-group.php' );
@@ -219,6 +227,7 @@ if ( ! class_exists( 'ACF' ) ) {
 				acf_include( 'includes/admin/admin-notices.php' );
 				acf_include( 'includes/admin/admin-tools.php' );
 				acf_include( 'includes/admin/admin-upgrade.php' );
+				acf_include( 'includes/admin/class-acf-admin-options-page.php' );
 			}
 
 			// Include legacy.
@@ -240,7 +249,7 @@ if ( ! class_exists( 'ACF' ) ) {
 		 * Completes the setup process on "init" of earlier.
 		 *
 		 * @date    28/09/13
-		 * @since   5.0.0
+		 * @since   ACF 5.0.0
 		 */
 		public function init() {
 
@@ -274,6 +283,9 @@ if ( ! class_exists( 'ACF' ) ) {
 				acf_include( 'includes/post-types/class-acf-post-type.php' );
 			}
 
+			if ( acf_get_setting( 'enable_options_pages_ui' ) ) {
+				acf_include( 'includes/post-types/class-acf-ui-options-page.php' );
+			}
 			// Add other ACF internal post types.
 			do_action( 'acf/init_internal_post_types' );
 
@@ -310,12 +322,17 @@ if ( ! class_exists( 'ACF' ) ) {
 			acf_include( 'includes/fields/class-acf-field-accordion.php' );
 			acf_include( 'includes/fields/class-acf-field-tab.php' );
 			acf_include( 'includes/fields/class-acf-field-group.php' );
+			acf_include( 'includes/fields/class-acf-repeater-table.php' );
+			acf_include( 'includes/fields/class-acf-field-repeater.php' );
+			acf_include( 'includes/fields/class-acf-field-flexible-content.php' );
+			acf_include( 'includes/fields/class-acf-field-gallery.php' );
+			acf_include( 'includes/fields/class-acf-field-clone.php' );
 
 			/**
 			 * Fires after field types have been included.
 			 *
 			 * @date    28/09/13
-			 * @since   5.0.0
+			 * @since   ACF 5.0.0
 			 *
 			 * @param   int ACF_FIELD_API_VERSION The field API version.
 			 */
@@ -343,12 +360,14 @@ if ( ! class_exists( 'ACF' ) ) {
 			acf_include( 'includes/locations/class-acf-location-widget.php' );
 			acf_include( 'includes/locations/class-acf-location-nav-menu.php' );
 			acf_include( 'includes/locations/class-acf-location-nav-menu-item.php' );
+			acf_include( 'includes/locations/class-acf-location-block.php' );
+			acf_include( 'includes/locations/class-acf-location-options-page.php' );
 
 			/**
 			 * Fires after location types have been included.
 			 *
 			 * @date    28/09/13
-			 * @since   5.0.0
+			 * @since   ACF 5.0.0
 			 *
 			 * @param   int ACF_FIELD_API_VERSION The field API version.
 			 */
@@ -358,7 +377,7 @@ if ( ! class_exists( 'ACF' ) ) {
 			 * Fires during initialization. Used to add local fields.
 			 *
 			 * @date    28/09/13
-			 * @since   5.0.0
+			 * @since   ACF 5.0.0
 			 *
 			 * @param   int ACF_FIELD_API_VERSION The field API version.
 			 */
@@ -367,7 +386,7 @@ if ( ! class_exists( 'ACF' ) ) {
 			/**
 			 * Fires during initialization. Used to add local post types.
 			 *
-			 * @since 6.1
+			 * @since ACF 6.1
 			 *
 			 * @param int ACF_MAJOR_VERSION The major version of ACF.
 			 */
@@ -376,11 +395,18 @@ if ( ! class_exists( 'ACF' ) ) {
 			/**
 			 * Fires during initialization. Used to add local taxonomies.
 			 *
-			 * @since 6.1
+			 * @since ACF 6.1
 			 *
 			 * @param int ACF_MAJOR_VERSION The major version of ACF.
 			 */
 			do_action( 'acf/include_taxonomies', ACF_MAJOR_VERSION );
+
+			/**
+			 * Fires during initialization. Used to add local option pages.
+			 *
+			 * @param int ACF_MAJOR_VERSION The major version of ACF.
+			 */
+			do_action( 'acf/include_options_pages', ACF_MAJOR_VERSION );
 
 			// If we're on 6.5 or newer, load block bindings. This will move to an autoloader in 6.3.
 			if ( version_compare( get_bloginfo( 'version' ), '6.5-beta1', '>=' ) ) {
@@ -392,7 +418,7 @@ if ( ! class_exists( 'ACF' ) ) {
 			 * Fires after ACF is completely "initialized".
 			 *
 			 * @date    28/09/13
-			 * @since   5.0.0
+			 * @since   ACF 5.0.0
 			 *
 			 * @param   int ACF_MAJOR_VERSION The major version of ACF.
 			 */
@@ -403,7 +429,7 @@ if ( ! class_exists( 'ACF' ) ) {
 		 * Registers the ACF post types.
 		 *
 		 * @date    22/10/2015
-		 * @since   5.3.2
+		 * @since   ACF 5.3.2
 		 */
 		public function register_post_types() {
 			$cap = acf_get_setting( 'capability' );
@@ -481,7 +507,7 @@ if ( ! class_exists( 'ACF' ) ) {
 		 * Registers the ACF post statuses.
 		 *
 		 * @date    22/10/2015
-		 * @since   5.3.2
+		 * @since   ACF 5.3.2
 		 */
 		public function register_post_status() {
 
@@ -504,7 +530,7 @@ if ( ! class_exists( 'ACF' ) ) {
 		 * Filters the $where clause allowing for custom WP_Query args.
 		 *
 		 * @date    31/8/19
-		 * @since   5.8.1
+		 * @since   ACF 5.8.1
 		 *
 		 * @param  string   $where    The WHERE clause.
 		 * @param  WP_Query $wp_query The query object.
@@ -513,11 +539,12 @@ if ( ! class_exists( 'ACF' ) ) {
 		public function posts_where( $where, $wp_query ) {
 			global $wpdb;
 
-			$field_key     = $wp_query->get( 'acf_field_key' );
-			$field_name    = $wp_query->get( 'acf_field_name' );
-			$group_key     = $wp_query->get( 'acf_group_key' );
-			$post_type_key = $wp_query->get( 'acf_post_type_key' );
-			$taxonomy_key  = $wp_query->get( 'acf_taxonomy_key' );
+			$field_key        = $wp_query->get( 'acf_field_key' );
+			$field_name       = $wp_query->get( 'acf_field_name' );
+			$group_key        = $wp_query->get( 'acf_group_key' );
+			$options_page_key = $wp_query->get( 'acf_ui_options_page_key' );
+			$post_type_key    = $wp_query->get( 'acf_post_type_key' );
+			$taxonomy_key     = $wp_query->get( 'acf_taxonomy_key' );
 
 			// Add custom "acf_field_key" arg.
 			if ( $field_key ) {
@@ -539,6 +566,11 @@ if ( ! class_exists( 'ACF' ) ) {
 				$where .= $wpdb->prepare( " AND {$wpdb->posts}.post_name = %s", $post_type_key );
 			}
 
+			// Add custom "acf_options_page_key" arg.
+			if ( $options_page_key ) {
+				$where .= $wpdb->prepare( " AND {$wpdb->posts}.post_name = %s", $options_page_key );
+			}
+
 			// Add custom "acf_taxonomy_key" arg.
 			if ( $taxonomy_key ) {
 				$where .= $wpdb->prepare( " AND {$wpdb->posts}.post_name = %s", $taxonomy_key );
@@ -551,7 +583,7 @@ if ( ! class_exists( 'ACF' ) ) {
 		 * Defines a constant if doesnt already exist.
 		 *
 		 * @date    3/5/17
-		 * @since   5.5.13
+		 * @since   ACF 5.5.13
 		 *
 		 * @param   string $name  The constant name.
 		 * @param   mixed  $value The constant value.
@@ -567,7 +599,7 @@ if ( ! class_exists( 'ACF' ) ) {
 		 * Returns true if a setting exists for this name.
 		 *
 		 * @date    2/2/18
-		 * @since   5.6.5
+		 * @since   ACF 5.6.5
 		 *
 		 * @param   string $name The setting name.
 		 * @return  boolean
@@ -580,7 +612,7 @@ if ( ! class_exists( 'ACF' ) ) {
 		 * Returns a setting or null if doesn't exist.
 		 *
 		 * @date    28/09/13
-		 * @since   5.0.0
+		 * @since   ACF 5.0.0
 		 *
 		 * @param   string $name The setting name.
 		 * @return  mixed
@@ -593,7 +625,7 @@ if ( ! class_exists( 'ACF' ) ) {
 		 * Updates a setting for the given name and value.
 		 *
 		 * @date    28/09/13
-		 * @since   5.0.0
+		 * @since   ACF 5.0.0
 		 *
 		 * @param   string $name  The setting name.
 		 * @param   mixed  $value The setting value.
@@ -608,7 +640,7 @@ if ( ! class_exists( 'ACF' ) ) {
 		 * Returns data or null if doesn't exist.
 		 *
 		 * @date    28/09/13
-		 * @since   5.0.0
+		 * @since   ACF 5.0.0
 		 *
 		 * @param   string $name The data name.
 		 * @return  mixed
@@ -621,7 +653,7 @@ if ( ! class_exists( 'ACF' ) ) {
 		 * Sets data for the given name and value.
 		 *
 		 * @date    28/09/13
-		 * @since   5.0.0
+		 * @since   ACF 5.0.0
 		 *
 		 * @param   string $name  The data name.
 		 * @param   mixed  $value The data value.
@@ -635,12 +667,12 @@ if ( ! class_exists( 'ACF' ) ) {
 		 * Returns an instance or null if doesn't exist.
 		 *
 		 * @date    13/2/18
-		 * @since   5.6.9
+		 * @since   ACF 5.6.9
 		 *
 		 * @param   string $class The instance class name.
 		 * @return  object
 		 */
-		public function get_instance( $class ) {
+		public function get_instance( $class ) { // phpcs:ignore Universal.NamingConventions.NoReservedKeywordParameterNames.classFound -- Opting not to rename due to PHP 8.0 named arugments.
 			$name = strtolower( $class );
 			return isset( $this->instances[ $name ] ) ? $this->instances[ $name ] : null;
 		}
@@ -649,12 +681,12 @@ if ( ! class_exists( 'ACF' ) ) {
 		 * Creates and stores an instance of the given class.
 		 *
 		 * @date    13/2/18
-		 * @since   5.6.9
+		 * @since   ACF 5.6.9
 		 *
 		 * @param   string $class The instance class name.
 		 * @return  object
 		 */
-		public function new_instance( $class ) {
+		public function new_instance( $class ) { // phpcs:ignore Universal.NamingConventions.NoReservedKeywordParameterNames.classFound -- Opting not to rename due to PHP 8.0 named arugments.
 			$instance                 = new $class();
 			$name                     = strtolower( $class );
 			$this->instances[ $name ] = $instance;
@@ -665,7 +697,7 @@ if ( ! class_exists( 'ACF' ) ) {
 		 * Magic __isset method for backwards compatibility.
 		 *
 		 * @date    24/4/20
-		 * @since   5.9.0
+		 * @since   ACF 5.9.0
 		 *
 		 * @param   string $key Key name.
 		 * @return  boolean
@@ -678,7 +710,7 @@ if ( ! class_exists( 'ACF' ) ) {
 		 * Magic __get method for backwards compatibility.
 		 *
 		 * @date    24/4/20
-		 * @since   5.9.0
+		 * @since   ACF 5.9.0
 		 *
 		 * @param   string $key Key name.
 		 * @return  mixed
@@ -696,7 +728,7 @@ if ( ! class_exists( 'ACF' ) ) {
 		/**
 		 * Plugin Activation Hook
 		 *
-		 * @since 6.2.6
+		 * @since ACF 6.2.6
 		 */
 		public function acf_plugin_activated() {
 			// Set the first activated version of ACF.
@@ -718,7 +750,7 @@ if ( ! class_exists( 'ACF' ) ) {
 	 * Example: <?php $acf = acf(); ?>
 	 *
 	 * @date    4/09/13
-	 * @since   4.3.0
+	 * @since   ACF 4.3.0
 	 *
 	 * @return  ACF
 	 */
@@ -741,25 +773,23 @@ if ( ! function_exists( 'scf_deactivate_other_instances' ) ) {
 	/**
 	 * Checks if another version of ACF/ACF PRO is active and deactivates it.
 	 * Hooked on `activated_plugin` so other plugin is deactivated when current plugin is activated.
-	 *
-	 * @param string $plugin The plugin being activated.
 	 */
-	function scf_deactivate_other_instances( $plugin ) {
+	function scf_deactivate_other_instances() {
 
 		$plugin_to_deactivate  = 'advanced-custom-fields/acf.php';
 		$deactivated_notice_id = '1';
 
-		// Check if the plugin to deactivate is installed
+		// Check if the plugin to deactivate is installed.
 		if ( is_plugin_active( 'advanced-custom-fields-pro/acf.php' ) ) {
 			$plugin_to_deactivate  = 'advanced-custom-fields-pro/acf.php';
 			$deactivated_notice_id = '2';
 		} elseif ( is_plugin_active( 'advanced-custom-fields/acf.php' ) ) {
-			// Check if the plugin to deactivate is 'advanced-custom-fields/acf.php' but the title is 'Secure Custom Fields'
+			// Check if the plugin to deactivate is 'advanced-custom-fields/acf.php' but the title is 'Secure Custom Fields'.
 			if ( ! function_exists( 'get_plugin_data' ) ) {
 				require_once ABSPATH . 'wp-admin/includes/plugin.php';
 			}
 			$plugin_data = get_plugin_data( WP_PLUGIN_DIR . '/' . $plugin_to_deactivate );
-			if ( $plugin_data['Name'] === 'Secure Custom Fields' ) {
+			if ( 'Secure Custom Fields' === $plugin_data['Name'] ) {
 				$deactivated_notice_id = '3';
 			}
 		}

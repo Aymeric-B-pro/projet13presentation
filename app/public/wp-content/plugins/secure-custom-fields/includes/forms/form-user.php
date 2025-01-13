@@ -18,7 +18,7 @@ if ( ! class_exists( 'ACF_Form_User' ) ) :
 		 *
 		 * @type    function
 		 * @date    5/03/2014
-		 * @since   5.0.0
+		 * @since   ACF 5.0.0
 		 *
 		 * @param   n/a
 		 * @return  n/a
@@ -50,9 +50,8 @@ if ( ! class_exists( 'ACF_Form_User' ) ) :
 		 * Checks current screen and enqueues scripts
 		 *
 		 * @date    17/4/18
-		 * @since   5.6.9
+		 * @since   ACF 5.6.9
 		 *
-		 * @param   void
 		 * @return  void
 		 */
 		function admin_enqueue_scripts() {
@@ -73,9 +72,8 @@ if ( ! class_exists( 'ACF_Form_User' ) ) :
 		 * Customizes and enqueues scripts
 		 *
 		 * @date    17/4/18
-		 * @since   5.6.9
+		 * @since   ACF 5.6.9
 		 *
-		 * @param   void
 		 * @return  void
 		 */
 		function login_form_register() {
@@ -94,9 +92,8 @@ if ( ! class_exists( 'ACF_Form_User' ) ) :
 		 *
 		 * @type    function
 		 * @date    8/10/13
-		 * @since   5.0.0
+		 * @since   ACF 5.0.0
 		 *
-		 * @param   void
 		 * @return  void
 		 */
 		function render_register() {
@@ -117,9 +114,8 @@ if ( ! class_exists( 'ACF_Form_User' ) ) :
 		 *
 		 * @type    function
 		 * @date    8/10/13
-		 * @since   5.0.0
+		 * @since   ACF 5.0.0
 		 *
-		 * @param   void
 		 * @return  void
 		 */
 		function render_edit( $user ) {
@@ -145,7 +141,7 @@ if ( ! class_exists( 'ACF_Form_User' ) ) :
 		 *
 		 * @type    function
 		 * @date    8/10/13
-		 * @since   5.0.0
+		 * @since   ACF 5.0.0
 		 *
 		 * @param   $post_id (int)
 		 * @return  $post_id (int)
@@ -172,7 +168,7 @@ if ( ! class_exists( 'ACF_Form_User' ) ) :
 		 * This function will render ACF fields for a given $post_id parameter
 		 *
 		 * @type    function
-		 * @since   5.0.0
+		 * @since   ACF 5.0.0
 		 *
 		 * @param   $user_id (int) this can be set to 0 for a new user
 		 * @param   $user_form (string) used for location rule matching. edit | add | register
@@ -257,7 +253,7 @@ if ( ! class_exists( 'ACF_Form_User' ) ) :
 		 *
 		 * @type    function
 		 * @date    27/03/2015
-		 * @since   5.1.5
+		 * @since   ACF 5.1.5
 		 *
 		 * @param   $post_id (int)
 		 * @return  $post_id (int)
@@ -289,7 +285,7 @@ if ( ! class_exists( 'ACF_Form_User' ) ) :
 		 *
 		 * @type    function
 		 * @date    8/10/13
-		 * @since   5.0.0
+		 * @since   ACF 5.0.0
 		 *
 		 * @param   $post_id (int)
 		 * @return  $post_id (int)
@@ -313,7 +309,7 @@ if ( ! class_exists( 'ACF_Form_User' ) ) :
 		 * Validates $_POST data and appends any errors to prevent new user registration.
 		 *
 		 * @date    12/7/19
-		 * @since   5.8.1
+		 * @since   ACF 5.8.1
 		 *
 		 * @param   WP_Error $errors               A WP_Error object containing any errors encountered during registration.
 		 * @param   string   $sanitized_user_login User's username after it has been sanitized.
@@ -340,7 +336,7 @@ if ( ! class_exists( 'ACF_Form_User' ) ) :
 		 * Checks if a $_POST value exists for this field to allow persistent values.
 		 *
 		 * @date    12/7/19
-		 * @since   5.8.2
+		 * @since   ACF 5.8.2
 		 *
 		 * @param   null         $null    A null placeholder.
 		 * @param   (int|string) $post_id The post id.

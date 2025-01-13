@@ -1,13 +1,12 @@
 <?php
-
 /**
  * ACF Internal Post Type List class
  *
  * Base class to add functionality to ACF internal post type list pages.
  *
- * @package ACF
+ * @package wordpress/secure-custom-fields
  * @subpackage Admin
- * @since 6.1
+ * @since ACF 6.1
  */
 
 if ( ! defined( 'ABSPATH' ) ) {
@@ -16,13 +15,18 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 if ( ! class_exists( 'ACF_Admin_Internal_Post_Type_List' ) ) :
 
+	/**
+	 * Internal Post Type List class.
+	 *
+	 * Adds logic to the edit page for internal post types.
+	 */
 	class ACF_Admin_Internal_Post_Type_List {
 
 
 		/**
 		 * The slug for the internal post type.
 		 *
-		 * @since 6.1
+		 * @since ACF 6.1
 		 * @var string
 		 */
 		public $post_type = '';
@@ -30,7 +34,7 @@ if ( ! class_exists( 'ACF_Admin_Internal_Post_Type_List' ) ) :
 		/**
 		 * The admin body class used for the post type.
 		 *
-		 * @since 6.1
+		 * @since ACF 6.1
 		 * @var string
 		 */
 		public $admin_body_class = '';
@@ -38,7 +42,7 @@ if ( ! class_exists( 'ACF_Admin_Internal_Post_Type_List' ) ) :
 		/**
 		 * Array of post objects available for sync.
 		 *
-		 * @since 5.9.0
+		 * @since ACF 5.9.0
 		 * @var array
 		 */
 		public $sync = array();
@@ -46,7 +50,7 @@ if ( ! class_exists( 'ACF_Admin_Internal_Post_Type_List' ) ) :
 		/**
 		 * The current view (post_status).
 		 *
-		 * @since 5.9.0
+		 * @since ACF 5.9.0
 		 * @var string
 		 */
 		public $view = '';
@@ -80,7 +84,7 @@ if ( ! class_exists( 'ACF_Admin_Internal_Post_Type_List' ) ) :
 		/**
 		 * Add any menu items required for post types.
 		 *
-		 * @since 6.1
+		 * @since ACF 6.1
 		 */
 		public function admin_menu() {}
 
@@ -88,7 +92,7 @@ if ( ! class_exists( 'ACF_Admin_Internal_Post_Type_List' ) ) :
 		 * Returns the admin URL for the current post type edit page.
 		 *
 		 * @date    27/3/20
-		 * @since   5.9.0
+		 * @since   ACF 5.9.0
 		 *
 		 * @param   string $params Extra URL params.
 		 * @return  string
@@ -104,7 +108,7 @@ if ( ! class_exists( 'ACF_Admin_Internal_Post_Type_List' ) ) :
 		 * Returns the post type admin URL taking into account the current view.
 		 *
 		 * @date    27/3/20
-		 * @since   5.9.0
+		 * @since   ACF 5.9.0
 		 *
 		 * @param   string $params Extra URL params.
 		 * @return  string
@@ -116,7 +120,7 @@ if ( ! class_exists( 'ACF_Admin_Internal_Post_Type_List' ) ) :
 		/**
 		 * Constructor for all ACF internal post type admin list pages.
 		 *
-		 * @since   5.0.0
+		 * @since   ACF 5.0.0
 		 */
 		public function current_screen() {
 			// Bail early if not the list admin page.
@@ -150,12 +154,12 @@ if ( ! class_exists( 'ACF_Admin_Internal_Post_Type_List' ) ) :
 			add_filter( "bulk_actions-edit-{$this->post_type}", array( $this, 'admin_table_bulk_actions' ), 10, 1 );
 			add_action( 'admin_footer', array( $this, 'admin_footer' ), 1 );
 
-			if ( $this->view !== 'trash' ) {
+			if ( 'trash' !== $this->view ) {
 				add_filter( 'page_row_actions', array( $this, 'page_row_actions' ), 10, 2 );
 			}
 
 			// Add hooks for "sync" view.
-			if ( $this->view === 'sync' ) {
+			if ( 'sync' === $this->view ) {
 				add_action( 'admin_footer', array( $this, 'admin_footer__sync' ), 1 );
 			}
 
@@ -165,7 +169,7 @@ if ( ! class_exists( 'ACF_Admin_Internal_Post_Type_List' ) ) :
 		/**
 		 * Sets up the field groups ready for sync.
 		 *
-		 * @since   5.9.0
+		 * @since   ACF 5.9.0
 		 */
 		public function setup_sync() {
 			// Review local json files.
@@ -185,7 +189,7 @@ if ( ! class_exists( 'ACF_Admin_Internal_Post_Type_List' ) ) :
 						continue;
 
 						// Ignore not local "json".
-					} elseif ( $local !== 'json' ) {
+					} elseif ( 'json' === $local ) {
 						continue;
 
 						// Append to sync if not yet in database.
@@ -203,7 +207,7 @@ if ( ! class_exists( 'ACF_Admin_Internal_Post_Type_List' ) ) :
 		/**
 		 * Enqueues admin scripts.
 		 *
-		 * @since   5.9.0
+		 * @since   ACF 5.9.0
 		 */
 		public function admin_enqueue_scripts() {
 			acf_enqueue_script( 'acf' );
@@ -221,7 +225,7 @@ if ( ! class_exists( 'ACF_Admin_Internal_Post_Type_List' ) ) :
 		 * Modifies the admin body class.
 		 *
 		 * @date    18/4/20
-		 * @since   5.9.0
+		 * @since   ACF 5.9.0
 		 *
 		 * @param string $classes Space-separated list of CSS classes.
 		 * @return string
@@ -239,7 +243,7 @@ if ( ! class_exists( 'ACF_Admin_Internal_Post_Type_List' ) ) :
 		/**
 		 * Returns the disabled post state HTML.
 		 *
-		 * @since 5.9.0
+		 * @since ACF 5.9.0
 		 *
 		 * @return string
 		 */
@@ -250,7 +254,7 @@ if ( ! class_exists( 'ACF_Admin_Internal_Post_Type_List' ) ) :
 		/**
 		 * Returns the registration error state.
 		 *
-		 * @since 6.1
+		 * @since ACF 6.1
 		 *
 		 * @return string
 		 */
@@ -264,14 +268,14 @@ if ( ! class_exists( 'ACF_Admin_Internal_Post_Type_List' ) ) :
 		 * Adds the "disabled" post state for the admin table title.
 		 *
 		 * @date    1/4/20
-		 * @since   5.9.0
+		 * @since   ACF 5.9.0
 		 *
 		 * @param array   $post_states An array of post display states.
 		 * @param WP_Post $post        The current post object.
 		 * @return array
 		 */
 		public function display_post_states( $post_states, $post ) {
-			if ( $post->post_status === 'acf-disabled' ) {
+			if ( 'acf-disabled' === $post->post_status ) {
 				$post_states['acf-disabled'] = $this->get_disabled_post_state();
 			}
 
@@ -293,7 +297,7 @@ if ( ! class_exists( 'ACF_Admin_Internal_Post_Type_List' ) ) :
 		/**
 		 * Get the HTML for when there are no post objects found.
 		 *
-		 * @since 6.0.0
+		 * @since ACF 6.0.0
 		 *
 		 * @return string
 		 */
@@ -315,7 +319,7 @@ if ( ! class_exists( 'ACF_Admin_Internal_Post_Type_List' ) ) :
 		 * Customizes the admin table columns.
 		 *
 		 * @date    1/4/20
-		 * @since   5.9.0
+		 * @since   ACF 5.9.0
 		 *
 		 * @param   array $_columns The columns array.
 		 * @return  array
@@ -328,7 +332,7 @@ if ( ! class_exists( 'ACF_Admin_Internal_Post_Type_List' ) ) :
 		 * Renders the admin table column HTML
 		 *
 		 * @date    1/4/20
-		 * @since   5.9.0
+		 * @since   ACF 5.9.0
 		 *
 		 * @param   string  $column_name The name of the column to display.
 		 * @param   integer $post_id     The current post ID.
@@ -346,7 +350,7 @@ if ( ! class_exists( 'ACF_Admin_Internal_Post_Type_List' ) ) :
 		 * Renders a specific admin table column.
 		 *
 		 * @date    17/4/20
-		 * @since   5.9.0
+		 * @since   ACF 5.9.0
 		 *
 		 * @param string $column_name The name of the column to display.
 		 * @param array  $post        The main ACF post array.
@@ -358,7 +362,7 @@ if ( ! class_exists( 'ACF_Admin_Internal_Post_Type_List' ) ) :
 		 * Returns a human-readable file location.
 		 *
 		 * @date    17/4/20
-		 * @since   5.9.0
+		 * @since   ACF 5.9.0
 		 *
 		 * @param   string $file The full file path.
 		 * @return  string
@@ -387,7 +391,7 @@ if ( ! class_exists( 'ACF_Admin_Internal_Post_Type_List' ) ) :
 		 * Displays the local JSON status of an ACF post.
 		 *
 		 * @date    14/4/20
-		 * @since   5.9.0
+		 * @since   ACF 5.9.0
 		 *
 		 * @param array $post The main ACF post array.
 		 * @return void
@@ -420,7 +424,7 @@ if ( ! class_exists( 'ACF_Admin_Internal_Post_Type_List' ) ) :
 		 * Customizes the page row actions visible on hover.
 		 *
 		 * @date    14/4/20
-		 * @since   5.9.0
+		 * @since   ACF 5.9.0
 		 *
 		 * @param   array   $actions The array of actions HTML.
 		 * @param   WP_Post $post    The post.
@@ -466,7 +470,7 @@ if ( ! class_exists( 'ACF_Admin_Internal_Post_Type_List' ) ) :
 		 * Modifies the admin table bulk actions dropdown.
 		 *
 		 * @date    15/4/20
-		 * @since   5.9.0
+		 * @since   ACF 5.9.0
 		 *
 		 * @param   array $actions The actions array.
 		 * @return  array
@@ -483,7 +487,7 @@ if ( ! class_exists( 'ACF_Admin_Internal_Post_Type_List' ) ) :
 			}
 
 			if ( $this->sync ) {
-				if ( $this->view === 'sync' ) {
+				if ( 'sync' === $this->view ) {
 					$actions = array();
 				}
 				$actions['acfsync'] = __( 'Sync changes', 'secure-custom-fields' );
@@ -495,20 +499,20 @@ if ( ! class_exists( 'ACF_Admin_Internal_Post_Type_List' ) ) :
 		/**
 		 * Gets the translated action notice text for list table actions (activate, deactivate, sync, etc.).
 		 *
-		 * @since 6.1
+		 * @since ACF 6.1
 		 *
 		 * @param string  $action The action being performed.
 		 * @param integer $count  The number of items the action was performed on.
 		 * @return string
 		 */
-		public function get_action_notice_text( $action, $count = 1 ) {
+		public function get_action_notice_text( $action, $count = 1 ) { // phpcs:ignore Generic.CodeAnalysis.UnusedFunctionParameter.FoundAfterLastUsed -- Keep it for awareness when extending.
 			return '';
 		}
 
 		/**
 		 * Checks for the custom "Activate" bulk action.
 		 *
-		 * @since 6.0
+		 * @since ACF 6.0
 		 */
 		public function check_activate() {
 			// Verify capability.
@@ -577,7 +581,7 @@ if ( ! class_exists( 'ACF_Admin_Internal_Post_Type_List' ) ) :
 		/**
 		 * Checks for the custom "Deactivate" bulk action.
 		 *
-		 * @since 6.0
+		 * @since ACF 6.0
 		 */
 		public function check_deactivate() {
 			// Verify capability.
@@ -646,7 +650,7 @@ if ( ! class_exists( 'ACF_Admin_Internal_Post_Type_List' ) ) :
 		/**
 		 * Checks for the custom "duplicate" action.
 		 *
-		 * @since   5.9.0
+		 * @since   ACF 5.9.0
 		 */
 		public function check_duplicate() {
 			// Verify capability.
@@ -713,7 +717,7 @@ if ( ! class_exists( 'ACF_Admin_Internal_Post_Type_List' ) ) :
 		/**
 		 * Checks for the custom "acfsync" action.
 		 *
-		 * @since   5.9.0
+		 * @since   ACF 5.9.0
 		 */
 		public function check_sync() {
 			// Verify capability.
@@ -773,19 +777,12 @@ if ( ! class_exists( 'ACF_Admin_Internal_Post_Type_List' ) ) :
 				$synced = array();
 
 				foreach ( $this->sync as $key => $post ) {
-					if ( $post['key'] && in_array( $post['key'], $keys ) ) {
-						// Import.
-					} elseif ( $post['ID'] && in_array( $post['ID'], $keys ) ) {
-						// Import.
-					} else {
-						// Ignore.
-						continue;
+					if ( ( $post['key'] && in_array( $post['key'], $keys, true ) ) || ( $post['ID'] && in_array( $post['ID'], $keys, true ) ) ) {
+						$local_post       = json_decode( file_get_contents( $files[ $key ] ), true );
+						$local_post['ID'] = $post['ID'];
+						$result           = acf_import_internal_post_type( $local_post, $this->post_type );
+						$synced[]         = $result['ID'];
 					}
-
-					$local_post       = json_decode( file_get_contents( $files[ $key ] ), true );
-					$local_post['ID'] = $post['ID'];
-					$result           = acf_import_internal_post_type( $local_post, $this->post_type );
-					$synced[]         = $result['ID'];
 				}
 
 				// Redirect.
@@ -798,7 +795,7 @@ if ( ! class_exists( 'ACF_Admin_Internal_Post_Type_List' ) ) :
 		 * Customizes the admin table subnav.
 		 *
 		 * @date    17/4/20
-		 * @since   5.9.0
+		 * @since   ACF 5.9.0
 		 *
 		 * @param   array $views The available views.
 		 * @return  array
@@ -813,7 +810,7 @@ if ( ! class_exists( 'ACF_Admin_Internal_Post_Type_List' ) ) :
 			if ( $count ) {
 				$views['sync'] = sprintf(
 					'<a %s href="%s">%s <span class="count">(%s)</span></a>',
-					( $this->view === 'sync' ? 'class="current"' : '' ),
+					( 'sync' === $this->view ? 'class="current"' : '' ),
 					esc_url( $this->get_admin_url( '&post_status=sync' ) ),
 					esc_html( __( 'Sync available', 'secure-custom-fields' ) ),
 					$count
@@ -821,7 +818,7 @@ if ( ! class_exists( 'ACF_Admin_Internal_Post_Type_List' ) ) :
 			}
 
 			// Modify table pagination args to match JSON data.
-			if ( $this->view === 'sync' ) {
+			if ( 'sync' === $this->view ) {
 				$wp_list_table->set_pagination_args(
 					array(
 						'total_items' => $count,
@@ -837,7 +834,7 @@ if ( ! class_exists( 'ACF_Admin_Internal_Post_Type_List' ) ) :
 		/**
 		 * Prints scripts into the admin footer.
 		 *
-		 * @since   5.9.0
+		 * @since   ACF 5.9.0
 		 */
 		public function admin_footer() {
 			?>
@@ -886,7 +883,7 @@ if ( ! class_exists( 'ACF_Admin_Internal_Post_Type_List' ) ) :
 		/**
 		 * Customizes the admin table HTML when viewing "sync" post_status.
 		 *
-		 * @since   5.9.0
+		 * @since   ACF 5.9.0
 		 */
 		public function admin_footer__sync() {
 			global $wp_list_table;
@@ -903,11 +900,11 @@ if ( ! class_exists( 'ACF_Admin_Internal_Post_Type_List' ) ) :
 							echo '<tr>';
 							foreach ( $columns as $column_name => $column_label ) {
 								$el = 'td';
-								if ( $column_name === 'cb' ) {
+								if ( 'cb' === $column_name ) {
 									$el           = 'th';
 									$classes      = 'check-column';
 									$column_label = '';
-								} elseif ( $column_name === 'title' ) {
+								} elseif ( 'title' === $column_name ) {
 									$classes = "$column_name column-$column_name column-primary";
 								} else {
 									$classes = "$column_name column-$column_name";
@@ -970,7 +967,7 @@ if ( ! class_exists( 'ACF_Admin_Internal_Post_Type_List' ) ) :
 		/**
 		 * Fires when trashing an internal post type.
 		 *
-		 * @since 5.0.0
+		 * @since ACF 5.0.0
 		 *
 		 * @param integer $post_id The post ID.
 		 */
@@ -984,7 +981,7 @@ if ( ! class_exists( 'ACF_Admin_Internal_Post_Type_List' ) ) :
 		 * Fires when untrashing an internal post type.
 		 *
 		 * @date    8/01/2014
-		 * @since   5.0.0
+		 * @since   ACF 5.0.0
 		 *
 		 * @param   integer $post_id The post ID.
 		 * @return  void
@@ -999,7 +996,7 @@ if ( ! class_exists( 'ACF_Admin_Internal_Post_Type_List' ) ) :
 		 * Fires when deleting an internal post type.
 		 *
 		 * @date    8/01/2014
-		 * @since   5.0.0
+		 * @since   ACF 5.0.0
 		 *
 		 * @param   integer $post_id The post ID.
 		 * @return  void

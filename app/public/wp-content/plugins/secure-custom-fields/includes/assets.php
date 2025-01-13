@@ -12,7 +12,7 @@ if ( ! class_exists( 'ACF_Assets' ) ) :
 		/**
 		 * Storage for i18n data.
 		 *
-		 * @since 5.6.9
+		 * @since ACF 5.6.9
 		 * @var array
 		 */
 		public $text = array();
@@ -20,7 +20,7 @@ if ( ! class_exists( 'ACF_Assets' ) ) :
 		/**
 		 * Storage for l10n data.
 		 *
-		 * @since 5.6.9
+		 * @since ACF 5.6.9
 		 * @var array
 		 */
 		public $data = array();
@@ -28,7 +28,7 @@ if ( ! class_exists( 'ACF_Assets' ) ) :
 		/**
 		 * List of enqueue flags.
 		 *
-		 * @since 5.9.0
+		 * @since ACF 5.9.0
 		 * @var boolean
 		 */
 		private $enqueue = array();
@@ -37,9 +37,8 @@ if ( ! class_exists( 'ACF_Assets' ) ) :
 		 * Constructor.
 		 *
 		 * @date    10/4/18
-		 * @since   5.6.9
+		 * @since   ACF 5.6.9
 		 *
-		 * @param   void
 		 * @return  void
 		 */
 		public function __construct() {
@@ -50,7 +49,7 @@ if ( ! class_exists( 'ACF_Assets' ) ) :
 		 * Magic __call method for backwards compatibility.
 		 *
 		 * @date    10/4/20
-		 * @since   5.9.0
+		 * @since   ACF 5.9.0
 		 *
 		 * @param   string $name      The method name.
 		 * @param   array  $arguments The array of arguments.
@@ -71,7 +70,7 @@ if ( ! class_exists( 'ACF_Assets' ) ) :
 		 * Appends an array of i18n data.
 		 *
 		 * @date    13/4/18
-		 * @since   5.6.9
+		 * @since   ACF 5.6.9
 		 *
 		 * @param   array $text An array of text for i18n.
 		 * @return  void
@@ -86,7 +85,7 @@ if ( ! class_exists( 'ACF_Assets' ) ) :
 		 * Appends an array of l10n data.
 		 *
 		 * @date    13/4/18
-		 * @since   5.6.9
+		 * @since   ACF 5.6.9
 		 *
 		 * @param   array $data An array of data for l10n.
 		 * @return  void
@@ -101,15 +100,23 @@ if ( ! class_exists( 'ACF_Assets' ) ) :
 		 * Registers the ACF scripts and styles.
 		 *
 		 * @date    10/4/18
-		 * @since   5.6.9
+		 * @since   ACF 5.6.9
 		 *
-		 * @param   void
 		 * @return  void
 		 */
 		public function register_scripts() {
 			// Extract vars.
 			$suffix  = defined( 'SCF_DEVELOPMENT_MODE' ) && SCF_DEVELOPMENT_MODE ? '' : '.min';
 			$version = acf_get_setting( 'version' );
+
+			// Register scripts.
+			wp_register_script( 'acf-pro-input', acf_get_url( 'assets/build/js/pro/acf-pro-input' . $suffix . '.js' ), array( 'acf-input' ), $version, true );
+			wp_register_script( 'acf-pro-field-group', acf_get_url( 'assets/build/js/pro/acf-pro-field-group' . $suffix . '.js' ), array( 'acf-field-group' ), $version, true );
+			wp_register_script( 'acf-pro-ui-options-page', acf_get_url( 'assets/build/js/pro/acf-pro-ui-options-page' . $suffix . '.js' ), array( 'acf-input' ), $version, true );
+
+			// Register styles.
+			wp_register_style( 'acf-pro-input', acf_get_url( 'assets/build/css/pro/acf-pro-input.css' ), array( 'acf-input' ), $version );
+			wp_register_style( 'acf-pro-field-group', acf_get_url( 'assets/build/css/pro/acf-pro-field-group.css' ), array( 'acf-input' ), $version );
 
 			// Register scripts.
 			wp_register_script( 'acf', acf_get_url( 'assets/build/js/acf' . $suffix . '.js' ), array( 'jquery' ), $version );
@@ -126,7 +133,7 @@ if ( ! class_exists( 'ACF_Assets' ) ) :
 			/**
 			 * Fires after core scripts and styles have been registered.
 			 *
-			 * @since   5.6.9
+			 * @since   ACF 5.6.9
 			 *
 			 * @param   string $version The ACF version.
 			 * @param   string $suffix The potential ".min" filename suffix.
@@ -138,7 +145,7 @@ if ( ! class_exists( 'ACF_Assets' ) ) :
 		 * Enqueues a script and sets up actions for priting supplemental scripts.
 		 *
 		 * @date    27/4/20
-		 * @since   5.9.0
+		 * @since   ACF 5.9.0
 		 *
 		 * @param   string $name The script name.
 		 * @return  void
@@ -152,7 +159,7 @@ if ( ! class_exists( 'ACF_Assets' ) ) :
 		 * Enqueues a style.
 		 *
 		 * @date    27/4/20
-		 * @since   5.9.0
+		 * @since   ACF 5.9.0
 		 *
 		 * @param   string $name The style name.
 		 * @return  void
@@ -165,9 +172,8 @@ if ( ! class_exists( 'ACF_Assets' ) ) :
 		 * Adds the actions needed to print supporting inline scripts.
 		 *
 		 * @date    27/4/20
-		 * @since   5.9.0
+		 * @since   ACF 5.9.0
 		 *
-		 * @param   void
 		 * @return  void
 		 */
 		private function add_actions() {
@@ -189,7 +195,7 @@ if ( ! class_exists( 'ACF_Assets' ) ) :
 		 * 2. Alters the priotiry or calls the method directly if the action has already passed.
 		 *
 		 * @date    28/4/20
-		 * @since   5.9.0
+		 * @since   ACF 5.9.0
 		 *
 		 * @param   string  $action        The action name.
 		 * @param   string  $method        The method name.
@@ -259,7 +265,7 @@ if ( ! class_exists( 'ACF_Assets' ) ) :
 		 * Generic controller for enqueuing scripts and styles.
 		 *
 		 * @date    28/4/20
-		 * @since   5.9.0
+		 * @since   ACF 5.9.0
 		 *
 		 * @param   array $args {
 		 * @type bool $uploader Whether or not to enqueue uploader scripts.
@@ -291,9 +297,8 @@ if ( ! class_exists( 'ACF_Assets' ) ) :
 		 * Enqueues the scripts and styles needed for the WP media uploader.
 		 *
 		 * @date    27/10/2014
-		 * @since   5.0.9
+		 * @since   ACF 5.0.9
 		 *
-		 * @param   void
 		 * @return  void
 		 */
 		public function enqueue_uploader() {
@@ -314,9 +319,7 @@ if ( ! class_exists( 'ACF_Assets' ) ) :
 			/**
 			 * Fires when enqueuing the uploader.
 			 *
-			 * @since   5.6.9
-			 *
-			 * @param   void
+			 * @since   ACF 5.6.9
 			 */
 			do_action( 'acf/enqueue_uploader' );
 		}
@@ -325,9 +328,8 @@ if ( ! class_exists( 'ACF_Assets' ) ) :
 		 * Enqueues and localizes scripts.
 		 *
 		 * @date    27/4/20
-		 * @since   5.9.0
+		 * @since   ACF 5.9.0
 		 *
-		 * @param   void
 		 * @return  void
 		 */
 		public function enqueue_scripts() {
@@ -379,12 +381,15 @@ if ( ! class_exists( 'ACF_Assets' ) ) :
 					)
 				);
 
+				// @todo integrate into the above. Previously, they were simply hooked into the hook below.
+				wp_enqueue_script( 'acf-pro-input' );
+				wp_enqueue_script( 'acf-pro-ui-options-page' );
+				wp_enqueue_style( 'acf-pro-input' );
+
 				/**
 				 * Fires during "admin_enqueue_scripts" when ACF scripts are enqueued.
 				 *
-				 * @since   5.6.9
-				 *
-				 * @param   void
+				 * @since   ACF 5.6.9
 				 */
 				do_action( 'acf/input/admin_enqueue_scripts' );
 			}
@@ -392,9 +397,7 @@ if ( ! class_exists( 'ACF_Assets' ) ) :
 			/**
 			 * Fires during "admin_enqueue_scripts" when ACF scripts are enqueued.
 			 *
-			 * @since   5.6.9
-			 *
-			 * @param   void
+			 * @since   ACF 5.6.9
 			 */
 			do_action( 'acf/admin_enqueue_scripts' );
 			do_action( 'acf/enqueue_scripts' );
@@ -415,9 +418,8 @@ if ( ! class_exists( 'ACF_Assets' ) ) :
 		 * Prints scripts in head.
 		 *
 		 * @date    27/4/20
-		 * @since   5.9.0
+		 * @since   ACF 5.9.0
 		 *
-		 * @param   void
 		 * @return  void
 		 */
 		public function print_scripts() {
@@ -426,9 +428,7 @@ if ( ! class_exists( 'ACF_Assets' ) ) :
 				/**
 				 * Fires during "admin_head" when ACF scripts are enqueued.
 				 *
-				 * @since   5.6.9
-				 *
-				 * @param   void
+				 * @since   ACF 5.6.9
 				 */
 				do_action( 'acf/input/admin_head' );
 				do_action( 'acf/input/admin_print_scripts' );
@@ -437,9 +437,7 @@ if ( ! class_exists( 'ACF_Assets' ) ) :
 			/**
 			 * Fires during "admin_head" when ACF scripts are enqueued.
 			 *
-			 * @since   5.6.9
-			 *
-			 * @param   void
+			 * @since   ACF 5.6.9
 			 */
 			do_action( 'acf/admin_head' );
 			do_action( 'acf/admin_print_scripts' );
@@ -449,9 +447,8 @@ if ( ! class_exists( 'ACF_Assets' ) ) :
 		 * Prints scripts in footer.
 		 *
 		 * @date    27/4/20
-		 * @since   5.9.0
+		 * @since   ACF 5.9.0
 		 *
-		 * @param   void
 		 * @return  void
 		 */
 		public function print_footer_scripts() {
@@ -490,7 +487,7 @@ if ( ! class_exists( 'ACF_Assets' ) ) :
 				/**
 				 * Filters an empty array for compat l10n data.
 				 *
-				 * @since   5.0.0
+				 * @since   ACF 5.0.0
 				 *
 				 * @param   array $data An array of data to append to.
 				 */
@@ -502,7 +499,7 @@ if ( ! class_exists( 'ACF_Assets' ) ) :
 				/**
 				 * Fires during "admin_footer" when ACF scripts are enqueued.
 				 *
-				 * @since 5.6.9
+				 * @since ACF 5.6.9
 				 */
 				do_action( 'acf/input/admin_footer' );
 				do_action( 'acf/input/admin_print_footer_scripts' );
@@ -511,9 +508,7 @@ if ( ! class_exists( 'ACF_Assets' ) ) :
 			/**
 			 * Fires during "admin_footer" when ACF scripts are enqueued.
 			 *
-			 * @since   5.6.9
-			 *
-			 * @param   void
+			 * @since   ACF 5.6.9
 			 */
 			do_action( 'acf/admin_footer' );
 			do_action( 'acf/admin_print_footer_scripts' );
@@ -526,9 +521,8 @@ if ( ! class_exists( 'ACF_Assets' ) ) :
 		 * Prints uploader scripts in footer.
 		 *
 		 * @date    11/06/2020
-		 * @since   5.9.0
+		 * @since   ACF 5.9.0
 		 *
-		 * @param   void
 		 * @return  void
 		 */
 		public function print_uploader_scripts() {
@@ -542,9 +536,7 @@ if ( ! class_exists( 'ACF_Assets' ) ) :
 			/**
 			 * Fires when printing uploader scripts.
 			 *
-			 * @since   5.6.9
-			 *
-			 * @param   void
+			 * @since   ACF 5.6.9
 			 */
 			do_action( 'acf/admin_print_uploader_scripts' );
 		}
@@ -558,7 +550,7 @@ endif; // class_exists check
  * Appends an array of i18n data for localization.
  *
  * @date    13/4/18
- * @since   5.6.9
+ * @since   ACF 5.6.9
  *
  * @param   array $text An array of text for i18n.
  * @return  void
@@ -571,7 +563,7 @@ function acf_localize_text( $text ) {
  * Appends an array of l10n data for localization.
  *
  * @date    13/4/18
- * @since   5.6.9
+ * @since   ACF 5.6.9
  *
  * @param   array $data An array of data for l10n.
  * @return  void
@@ -584,7 +576,7 @@ function acf_localize_data( $data ) {
  * Enqueues a script with support for supplemental inline scripts.
  *
  * @date    27/4/20
- * @since   5.9.0
+ * @since   ACF 5.9.0
  *
  * @param   string $name The script name.
  * @return  void
@@ -597,7 +589,7 @@ function acf_enqueue_script( $name ) {
  * Enqueues the input scripts required for fields.
  *
  * @date    13/4/18
- * @since   5.6.9
+ * @since   ACF 5.6.9
  *
  * @param   array $args See ACF_Assets::enqueue_scripts() for a list of args.
  * @return  void
@@ -610,9 +602,8 @@ function acf_enqueue_scripts( $args = array() ) {
  * Enqueues the WP media uploader scripts and styles.
  *
  * @date    27/10/2014
- * @since   5.0.9
+ * @since   ACF 5.0.9
  *
- * @param   void
  * @return  void
  */
 function acf_enqueue_uploader() {

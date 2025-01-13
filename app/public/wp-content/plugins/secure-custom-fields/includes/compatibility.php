@@ -14,9 +14,8 @@ if ( ! class_exists( 'ACF_Compatibility' ) ) :
 		 * Sets up the class functionality.
 		 *
 		 * @date    30/04/2014
-		 * @since   5.0.0
+		 * @since   ACF 5.0.0
 		 *
-		 * @param   void
 		 * @return  void
 		 */
 		function __construct() {
@@ -53,9 +52,8 @@ if ( ! class_exists( 'ACF_Compatibility' ) ) :
 		 * Adds compatibility for deprecated settings.
 		 *
 		 * @date    10/6/19
-		 * @since   5.8.1
+		 * @since   ACF 5.8.1
 		 *
-		 * @param   void
 		 * @return  void
 		 */
 		function init() {
@@ -72,7 +70,7 @@ if ( ! class_exists( 'ACF_Compatibility' ) ) :
 		 * Adds compatibility with deprecated field wrap attributes.
 		 *
 		 * @date    21/1/19
-		 * @since   5.7.10
+		 * @since   ACF 5.7.10
 		 *
 		 * @param   array $wrapper The wrapper attributes array.
 		 * @param   array $field   The field array.
@@ -97,7 +95,7 @@ if ( ! class_exists( 'ACF_Compatibility' ) ) :
 		 * Adds compatibility with deprecated settings
 		 *
 		 * @date    23/04/2014
-		 * @since   5.0.0
+		 * @since   ACF 5.0.0
 		 *
 		 * @param   array $field The field array.
 		 * @return  array $field
@@ -126,7 +124,7 @@ if ( ! class_exists( 'ACF_Compatibility' ) ) :
 		 * Adds compatibility with deprecated settings
 		 *
 		 * @date    23/04/2014
-		 * @since   5.0.0
+		 * @since   ACF 5.0.0
 		 *
 		 * @param   array $field The field array.
 		 * @return  array $field
@@ -149,7 +147,7 @@ if ( ! class_exists( 'ACF_Compatibility' ) ) :
 		 * Adds compatibility with deprecated settings
 		 *
 		 * @date    23/04/2014
-		 * @since   5.0.0
+		 * @since   ACF 5.0.0
 		 *
 		 * @param   array $field The field array.
 		 * @return  array $field
@@ -181,7 +179,7 @@ if ( ! class_exists( 'ACF_Compatibility' ) ) :
 		 * Adds compatibility with deprecated settings
 		 *
 		 * @date    23/04/2014
-		 * @since   5.0.0
+		 * @since   ACF 5.0.0
 		 *
 		 * @param   array $field The field array.
 		 * @return  array $field
@@ -208,7 +206,7 @@ if ( ! class_exists( 'ACF_Compatibility' ) ) :
 		 * Adds compatibility with deprecated settings
 		 *
 		 * @date    23/04/2014
-		 * @since   5.0.0
+		 * @since   ACF 5.0.0
 		 *
 		 * @param   array $field The field array.
 		 * @return  array $field
@@ -232,7 +230,7 @@ if ( ! class_exists( 'ACF_Compatibility' ) ) :
 		 * Adds compatibility with deprecated settings
 		 *
 		 * @date    23/04/2014
-		 * @since   5.0.0
+		 * @since   ACF 5.0.0
 		 *
 		 * @param   array $field The field array.
 		 * @return  array $field
@@ -267,7 +265,7 @@ if ( ! class_exists( 'ACF_Compatibility' ) ) :
 		 * Adds compatibility with deprecated settings
 		 *
 		 * @date    23/04/2014
-		 * @since   5.2.7
+		 * @since   ACF 5.2.7
 		 *
 		 * @param   array $field The field array.
 		 * @return  array $field
@@ -289,7 +287,7 @@ if ( ! class_exists( 'ACF_Compatibility' ) ) :
 		 * Adds compatibility with deprecated settings
 		 *
 		 * @date    23/04/2014
-		 * @since   5.2.7
+		 * @since   ACF 5.2.7
 		 *
 		 * @param   array $field The field array.
 		 * @return  array $field
@@ -329,7 +327,7 @@ if ( ! class_exists( 'ACF_Compatibility' ) ) :
 		 * Adds compatibility with deprecated settings
 		 *
 		 * @date    23/04/2014
-		 * @since   5.2.7
+		 * @since   ACF 5.2.7
 		 *
 		 * @param   array $field The field array.
 		 * @return  array $field
@@ -362,7 +360,7 @@ if ( ! class_exists( 'ACF_Compatibility' ) ) :
 		 *
 		 * @type    function
 		 * @date    23/04/2014
-		 * @since   5.0.0
+		 * @since   ACF 5.0.0
 		 *
 		 * @param   $field_group (array)
 		 * @return  $field_group
@@ -444,7 +442,7 @@ if ( ! class_exists( 'ACF_Compatibility' ) ) :
 		 * description
 		 *
 		 * @date    27/8/18
-		 * @since   5.7.4
+		 * @since   ACF 5.7.4
 		 *
 		 * @param   type $var Description. Default.
 		 * @return  type Description.
@@ -472,7 +470,7 @@ endif; // class_exists check
  * Returns true if compatibility is enabled for the given component.
  *
  * @date    20/1/15
- * @since   5.1.5
+ * @since   ACF 5.1.5
  *
  * @param   string $name The name of the component to check.
  * @return  boolean

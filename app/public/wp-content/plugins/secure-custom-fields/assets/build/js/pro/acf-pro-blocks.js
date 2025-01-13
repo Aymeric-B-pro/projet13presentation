@@ -48,17 +48,17 @@ const md5 = __webpack_require__(/*! md5 */ "./node_modules/md5/md5.js");
   /**
    * Storage for registered block types.
    *
-   * @since 5.8.0
+   * @since ACF 5.8.0
    * @var object
    */
   const blockTypes = {};
 
   /**
    * Data storage for Block Instances and their DynamicHTML components.
-   * This is temporarily stored on the ACF object, but this will be replaced in ACF 6.4.
+   * This is temporarily stored on the ACF object, but this will be replaced later.
    * Developers should not rely on reading or using any aspect of acf.blockInstances.
    *
-   * @since 6.3
+   * @since ACF 6.3
    */
   acf.blockInstances = {};
 
@@ -66,7 +66,7 @@ const md5 = __webpack_require__(/*! md5 */ "./node_modules/md5/md5.js");
    * Returns a block type for the given name.
    *
    * @date	20/2/19
-   * @since	5.8.0
+   * @since	ACF 5.8.0
    *
    * @param	string name The block name.
    * @return	(object|false)
@@ -79,7 +79,7 @@ const md5 = __webpack_require__(/*! md5 */ "./node_modules/md5/md5.js");
    * Returns a block version for a given block name
    *
    * @date 8/6/22
-   * @since 6.0
+   * @since ACF 6.0
    *
    * @param string name The block name
    * @return int
@@ -92,7 +92,7 @@ const md5 = __webpack_require__(/*! md5 */ "./node_modules/md5/md5.js");
   /**
    * Returns a block's validate property. Default true.
    *
-   * @since 6.3
+   * @since ACF 6.3
    *
    * @param string name The block name
    * @return boolean
@@ -106,7 +106,7 @@ const md5 = __webpack_require__(/*! md5 */ "./node_modules/md5/md5.js");
    * Returns true if a block (identified by client ID) is nested in a query loop block.
    *
    * @date 17/1/22
-   * @since 5.12
+   * @since ACF 5.12
    *
    * @param {string} clientId A block client ID
    * @return boolean
@@ -121,7 +121,7 @@ const md5 = __webpack_require__(/*! md5 */ "./node_modules/md5/md5.js");
    * Returns true if we're currently inside the WP 5.9+ site editor.
    *
    * @date 08/02/22
-   * @since 5.12
+   * @since ACF 5.12
    *
    * @return boolean
    */
@@ -136,7 +136,7 @@ const md5 = __webpack_require__(/*! md5 */ "./node_modules/md5/md5.js");
    * edit-post store rather than the edit-site store.
    *
    * @date 15/02/22
-   * @since 5.12
+   * @since ACF 5.12
    *
    * @return boolean
    */
@@ -160,7 +160,7 @@ const md5 = __webpack_require__(/*! md5 */ "./node_modules/md5/md5.js");
    * Returns true if the block editor is currently in template edit mode.
    *
    * @date 16/02/22
-   * @since 5.12
+   * @since ACF 5.12
    *
    * @return boolean
    */
@@ -179,7 +179,7 @@ const md5 = __webpack_require__(/*! md5 */ "./node_modules/md5/md5.js");
    * Returns true if we're currently inside an iFramed non-desktop device preview type (WP5.9+)
    *
    * @date 15/02/22
-   * @since 5.12
+   * @since ACF 5.12
    *
    * @return boolean
    */
@@ -191,7 +191,7 @@ const md5 = __webpack_require__(/*! md5 */ "./node_modules/md5/md5.js");
    * Registers a block type.
    *
    * @date	19/2/19
-   * @since	5.8.0
+   * @since	ACF 5.8.0
    *
    * @param	object blockType The block type settings localized from PHP.
    * @return	object The result from wp.blocks.registerBlockType().
@@ -313,7 +313,7 @@ const md5 = __webpack_require__(/*! md5 */ "./node_modules/md5/md5.js");
    * Returns the wp.data.select() response with backwards compatibility.
    *
    * @date	17/06/2020
-   * @since	5.9.0
+   * @since	ACF 5.9.0
    *
    * @param	string selector The selector name.
    * @return	mixed
@@ -329,7 +329,7 @@ const md5 = __webpack_require__(/*! md5 */ "./node_modules/md5/md5.js");
    * Returns the wp.data.dispatch() response with backwards compatibility.
    *
    * @date	17/06/2020
-   * @since	5.9.0
+   * @since	ACF 5.9.0
    *
    * @param	string selector The selector name.
    * @return	mixed
@@ -342,7 +342,7 @@ const md5 = __webpack_require__(/*! md5 */ "./node_modules/md5/md5.js");
    * Returns an array of all blocks for the given args.
    *
    * @date	27/2/19
-   * @since	5.7.13
+   * @since	ACF 5.7.13
    *
    * @param	{object} args An object of key=>value pairs used to filter results.
    * @return	array.
@@ -380,7 +380,7 @@ const md5 = __webpack_require__(/*! md5 */ "./node_modules/md5/md5.js");
   /**
    * Storage for cached AJAX requests for block content.
    *
-   * @since 5.12
+   * @since ACF 5.12
    * @const {array}
    */
   const fetchCache = {};
@@ -389,7 +389,7 @@ const md5 = __webpack_require__(/*! md5 */ "./node_modules/md5/md5.js");
    * Fetches a JSON result from the AJAX API.
    *
    * @date	28/2/19
-   * @since	5.7.13
+   * @since	ACF 5.7.13
    *
    * @param	object block The block props.
    * @query	object The query args used in AJAX callback.
@@ -467,7 +467,7 @@ const md5 = __webpack_require__(/*! md5 */ "./node_modules/md5/md5.js");
    * Returns true if both object are the same.
    *
    * @date	19/05/2020
-   * @since	5.9.0
+   * @since	ACF 5.9.0
    *
    * @param	object obj1
    * @param	object obj2
@@ -481,7 +481,7 @@ const md5 = __webpack_require__(/*! md5 */ "./node_modules/md5/md5.js");
    * Converts HTML into a React element.
    *
    * @date	19/05/2020
-   * @since	5.9.0
+   * @since	ACF 5.9.0
    *
    * @param	string html The HTML to convert.
    * @param	int acfBlockVersion The ACF block version number.
@@ -499,7 +499,7 @@ const md5 = __webpack_require__(/*! md5 */ "./node_modules/md5/md5.js");
    * Converts a DOM node into a React element.
    *
    * @date	19/05/2020
-   * @since	5.9.0
+   * @since	ACF 5.9.0
    *
    * @param	DOM node The DOM node.
    * @param	int acfBlockVersion The ACF block version number.
@@ -550,7 +550,7 @@ const md5 = __webpack_require__(/*! md5 */ "./node_modules/md5/md5.js");
    * Converts a node or attribute name into it's JSX compliant name
    *
    * @date     05/07/2021
-   * @since    5.9.8
+   * @since    ACF 5.9.8
    *
    * @param    string name The node or attribute name.
    * @return  string
@@ -565,7 +565,7 @@ const md5 = __webpack_require__(/*! md5 */ "./node_modules/md5/md5.js");
    * Converts the given name into a React friendly name or component.
    *
    * @date	19/05/2020
-   * @since	5.9.0
+   * @since	ACF 5.9.0
    *
    * @param	string name The node name in lowercase.
    * @param	int acfBlockVersion The ACF block version number.
@@ -592,7 +592,7 @@ const md5 = __webpack_require__(/*! md5 */ "./node_modules/md5/md5.js");
   /**
    * Functional component for ACFInnerBlocks.
    *
-   * @since 6.0.0
+   * @since ACF 6.0.0
    *
    * @param obj props element properties.
    * @return DOM element
@@ -611,7 +611,7 @@ const md5 = __webpack_require__(/*! md5 */ "./node_modules/md5/md5.js");
    * Converts the given attribute into a React friendly name and value object.
    *
    * @date	19/05/2020
-   * @since	5.9.0
+   * @since	ACF 5.9.0
    *
    * @param	obj nodeAttr The node attribute.
    * @return	obj
@@ -683,7 +683,7 @@ const md5 = __webpack_require__(/*! md5 */ "./node_modules/md5/md5.js");
    * WordPress will include them always within the saved block serialized JSON.
    *
    * @date	31/07/2020
-   * @since	5.9.0
+   * @since	ACF 5.9.0
    *
    * @param	Component BlockListBlock The BlockListBlock Component.
    * @return	Component
@@ -747,7 +747,7 @@ const md5 = __webpack_require__(/*! md5 */ "./node_modules/md5/md5.js");
    * The BlockSave functional component.
    *
    * @date	08/07/2020
-   * @since	5.9.0
+   * @since	ACF 5.9.0
    */
   function BlockSave() {
     return /*#__PURE__*/React.createElement(InnerBlocks.Content, null);
@@ -757,7 +757,7 @@ const md5 = __webpack_require__(/*! md5 */ "./node_modules/md5/md5.js");
    * The BlockEdit component.
    *
    * @date	19/2/19
-   * @since	5.7.12
+   * @since	ACF 5.7.12
    */
   class BlockEdit extends Component {
     constructor(props) {
@@ -840,7 +840,7 @@ const md5 = __webpack_require__(/*! md5 */ "./node_modules/md5/md5.js");
   /**
    * The BlockBody functional component.
    *
-   * @since	5.7.12
+   * @since	ACF 5.7.12
    */
   function BlockBody(props) {
     const {
@@ -900,7 +900,7 @@ const md5 = __webpack_require__(/*! md5 */ "./node_modules/md5/md5.js");
    * A react component to append HTMl.
    *
    * @date	19/2/19
-   * @since	5.7.12
+   * @since	ACF 5.7.12
    *
    * @param	string children The html to insert.
    * @return	void
@@ -922,7 +922,7 @@ const md5 = __webpack_require__(/*! md5 */ "./node_modules/md5/md5.js");
    * inline <script> HTML each time the component is rendered.
    *
    * @date	29/05/2020
-   * @since	5.9.0
+   * @since	ACF 5.9.0
    *
    * @param	type Var Description.
    * @return	type Description.
@@ -950,7 +950,7 @@ const md5 = __webpack_require__(/*! md5 */ "./node_modules/md5/md5.js");
    * A react componenet to load and insert dynamic HTML.
    *
    * @date	19/2/19
-   * @since	5.7.12
+   * @since	ACF 5.7.12
    *
    * @param	void
    * @return	void
@@ -1253,7 +1253,7 @@ const md5 = __webpack_require__(/*! md5 */ "./node_modules/md5/md5.js");
    * A react componenet to handle the block form.
    *
    * @date	19/2/19
-   * @since	5.7.12
+   * @since	ACF 5.7.12
    *
    * @param	string id the block id.
    * @return	void
@@ -1412,7 +1412,7 @@ const md5 = __webpack_require__(/*! md5 */ "./node_modules/md5/md5.js");
    * A react componenet to handle the block preview.
    *
    * @date	19/2/19
-   * @since	5.7.12
+   * @since	ACF 5.7.12
    *
    * @param	string id the block id.
    * @return	void
@@ -1577,7 +1577,7 @@ const md5 = __webpack_require__(/*! md5 */ "./node_modules/md5/md5.js");
   /**
    * Initializes ACF Blocks logic and registration.
    *
-   * @since 5.9.0
+   * @since ACF 5.9.0
    */
   function initialize() {
     // Add support for WordPress versions before 5.2.
@@ -1600,7 +1600,7 @@ const md5 = __webpack_require__(/*! md5 */ "./node_modules/md5/md5.js");
    * Returns a valid vertical alignment.
    *
    * @date	07/08/2020
-   * @since	5.9.0
+   * @since	ACF 5.9.0
    *
    * @param	string align A vertical alignment.
    * @return	string
@@ -1615,7 +1615,7 @@ const md5 = __webpack_require__(/*! md5 */ "./node_modules/md5/md5.js");
    * Returns a valid horizontal alignment.
    *
    * @date	07/08/2020
-   * @since	5.9.0
+   * @since	ACF 5.9.0
    *
    * @param	string align A horizontal alignment.
    * @return	string
@@ -1632,7 +1632,7 @@ const md5 = __webpack_require__(/*! md5 */ "./node_modules/md5/md5.js");
    * Written for "upgrade-path" compatibility from vertical alignment to matrix alignment.
    *
    * @date	07/08/2020
-   * @since	5.9.0
+   * @since	ACF 5.9.0
    *
    * @param	string align A matrix alignment.
    * @return	string
@@ -1650,7 +1650,7 @@ const md5 = __webpack_require__(/*! md5 */ "./node_modules/md5/md5.js");
    * A higher order component adding alignContent editing functionality.
    *
    * @date	08/07/2020
-   * @since	5.9.0
+   * @since	ACF 5.9.0
    *
    * @param	component OriginalBlockEdit The original BlockEdit component.
    * @param	object blockType The block type settings.
@@ -1711,7 +1711,7 @@ const md5 = __webpack_require__(/*! md5 */ "./node_modules/md5/md5.js");
    * A higher order component adding alignText editing functionality.
    *
    * @date	08/07/2020
-   * @since	5.9.0
+   * @since	ACF 5.9.0
    *
    * @param	component OriginalBlockEdit The original BlockEdit component.
    * @param	object blockType The block type settings.
@@ -1752,7 +1752,7 @@ const md5 = __webpack_require__(/*! md5 */ "./node_modules/md5/md5.js");
    * A higher order component adding full height support.
    *
    * @date	19/07/2021
-   * @since	5.10.0
+   * @since	ACF 5.10.0
    *
    * @param	component OriginalBlockEdit The original BlockEdit component.
    * @param	object blockType The block type settings.
@@ -1789,7 +1789,7 @@ const md5 = __webpack_require__(/*! md5 */ "./node_modules/md5/md5.js");
   /**
    * Appends a backwards compatibility attribute for conversion.
    *
-   * @since	6.0
+   * @since	ACF 6.0
    *
    * @param	object attributes The block type attributes.
    * @return	object
@@ -1804,7 +1804,7 @@ const md5 = __webpack_require__(/*! md5 */ "./node_modules/md5/md5.js");
   /**
    * Create a block hash from attributes
    *
-   * @since 6.0
+   * @since ACF 6.0
    *
    * @param object attributes The block type attributes.
    * @param object context The current block context object.
@@ -1818,7 +1818,7 @@ const md5 = __webpack_require__(/*! md5 */ "./node_modules/md5/md5.js");
   /**
    * Key sort an object
    *
-   * @since 6.3.1
+   * @since ACF 6.3.1
    *
    * @param object toSort The object to be sorted
    * @return object

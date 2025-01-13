@@ -6,9 +6,8 @@
  * Returns true if this site has an upgrade avaialble.
  *
  * @date    24/8/18
- * @since   5.7.4
+ * @since   ACF 5.7.4
  *
- * @param   void
  * @return  boolean
  */
 function acf_has_upgrade() {
@@ -29,7 +28,7 @@ function acf_has_upgrade() {
  * Runs upgrade routines if this site has an upgrade available.
  *
  * @date  24/8/18
- * @since 5.7.4
+ * @since ACF 5.7.4
  */
 function acf_upgrade_all() {
 	// Increase time limit if possible.
@@ -80,9 +79,8 @@ function acf_upgrade_all() {
  * Returns the ACF DB version.
  *
  * @date    10/09/2016
- * @since   5.4.0
+ * @since   ACF 5.4.0
  *
- * @param   void
  * @return  string
  */
 function acf_get_db_version() {
@@ -93,7 +91,7 @@ function acf_get_db_version() {
  * Updates the ACF DB version.
  *
  * @date    10/09/2016
- * @since   5.4.0
+ * @since   ACF 5.4.0
  *
  * @param   string $version The new version.
  * @return  void
@@ -108,9 +106,8 @@ function acf_update_db_version( $version = '' ) {
  * Version 5 introduces new post types for field groups and fields.
  *
  * @date    23/8/18
- * @since   5.7.4
+ * @since   ACF 5.7.4
  *
- * @param   void
  * @return  void
  */
 function acf_upgrade_500() {
@@ -134,9 +131,8 @@ function acf_upgrade_500() {
  * Upgrades all ACF4 field groups to ACF5
  *
  * @date    23/8/18
- * @since   5.7.4
+ * @since   ACF 5.7.4
  *
- * @param   void
  * @return  void
  */
 function acf_upgrade_500_field_groups() {
@@ -169,7 +165,7 @@ function acf_upgrade_500_field_groups() {
  * Upgrades a ACF4 field group to ACF5
  *
  * @date    23/8/18
- * @since   5.7.4
+ * @since   ACF 5.7.4
  *
  * @param   object $ofg The old field group post object.
  * @return  array $nfg  The new field group array.
@@ -239,7 +235,7 @@ function acf_upgrade_500_field_group( $ofg ) {
  * Upgrades all ACF4 fields to ACF5 from a specific field group
  *
  * @date    23/8/18
- * @since   5.7.4
+ * @since   ACF 5.7.4
  *
  * @param   object $ofg The old field group post object.
  * @param   array  $nfg The new field group array.
@@ -291,7 +287,7 @@ function acf_upgrade_500_fields( $ofg, $nfg ) {
  * Upgrades a ACF4 field to ACF5
  *
  * @date    23/8/18
- * @since   5.7.4
+ * @since   ACF 5.7.4
  *
  * @param   array $field The old field.
  * @return  array $field The new field.
@@ -375,9 +371,8 @@ function acf_upgrade_500_field( $field ) {
  * Version 5.5 adds support for the wp_termmeta table added in WP 4.4.
  *
  * @date    23/8/18
- * @since   5.7.4
+ * @since   ACF 5.7.4
  *
- * @param   void
  * @return  void
  */
 function acf_upgrade_550() {
@@ -401,9 +396,8 @@ function acf_upgrade_550() {
  * Upgrades all ACF4 termmeta saved in wp_options to the wp_termmeta table.
  *
  * @date    23/8/18
- * @since   5.7.4
+ * @since   ACF 5.7.4
  *
- * @param   void
  * @return  void
  */
 function acf_upgrade_550_termmeta() {
@@ -434,7 +428,7 @@ function acf_upgrade_550_termmeta() {
  * When the database is updated to support term meta, migrate ACF term meta data across.
  *
  * @date    23/8/18
- * @since   5.7.4
+ * @since   ACF 5.7.4
  *
  * @param   string $wp_db_version         The new $wp_db_version.
  * @param   string $wp_current_db_version The old (current) $wp_db_version.
@@ -455,7 +449,7 @@ add_action( 'wp_upgrade', 'acf_wp_upgrade_550_termmeta', 10, 2 );
  * Upgrades all ACF4 termmeta for a specific taxonomy.
  *
  * @date    24/8/18
- * @since   5.7.4
+ * @since   ACF 5.7.4
  *
  * @param   string $taxonomy The taxonomy name.
  * @return  void

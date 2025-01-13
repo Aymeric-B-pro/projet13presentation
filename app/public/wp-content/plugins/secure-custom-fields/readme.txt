@@ -4,7 +4,7 @@ Tags: fields, custom fields, meta, scf
 Requires at least: 6.0
 Tested up to: 6.7
 Requires PHP: 7.4
-Stable tag: 6.4.1-beta4
+Stable tag: 6.4.1-beta6
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -35,7 +35,6 @@ Installing this plugin will deactivate plugins with matching function names/func
 * Clear and easy-to-use setup
 * Robust functions for content management
 * Over 30 Field Types
-* Millions of Users
 
 == Screenshots ==
 
@@ -82,5 +81,5 @@ This plugin builds upon and is a fork of the previous work done by the contribut
 
 == Upgrade Notice ==
 
-= 6.4.1-beta4 =
-This update changes the main file name. Updates should seamlessly work, but please confirm the plugin is active after upgrade.
+= 6.4.1-beta6 =
+Corrects issue where Options page would not display in wp-admin and a missing function from the Clone field.

@@ -72,22 +72,19 @@ input:focus, textarea:focus, button:focus {
     padding: 20px 0 !important;
     max-width: 100% !important;
     background-color: rgba(255, 255, 255, 0.63);
-    padding: 20px; /* Ajoute de l'espace intérieur */
-    border-radius: 10px; /* Angles arrondis */
-    border-style: double; /* Style de la bordure */
-    border-width: 0 8px 8px 8px; /* Haut: 0, Droite: 8px, Bas: 8px, Gauche: 8px */
-    border-color: #000; /* Couleur de la bordure */
+    padding: 20px;
+    border-radius: 10px;
+    border-style: double;
+    border-width: 0 8px 8px 8px;
+    border-color: #000;
 }
-
 .primary-navigation {
     display: flex;
     align-items: center;
     list-style: none;
-
     margin: 0 !important;
     justify-content: space-between !important;
 }
-
 .primary-navigation a{
     display: flex;
     background: none !important;
@@ -100,7 +97,6 @@ input:focus, textarea:focus, button:focus {
     justify-content: center !important;
     margin: 0 30px;
 }
-
 .primary-menu-container a{
     color:black !important;
 }
@@ -118,14 +114,6 @@ input:focus, textarea:focus, button:focus {
     outline: none !important;
     text-decoration: none !important;
 }
-.logo a img {
-    width: 216px;
-    height: auto;
-    padding-bottom: 5px;
-}
-.site-logo {
-    margin-top: 0px !important;
-}
 .main-navigation {
     flex-grow: 1;
     text-align: right;
@@ -136,9 +124,6 @@ input:focus, textarea:focus, button:focus {
     margin: 0;
     padding: 0;
     display: flex;
-    justify-content: flex-end;
-    text-decoration: none;
-    list-style: none;
     background: none; 
     text-decoration: none !important;
     background: transparent !important;
@@ -171,22 +156,11 @@ input:focus, textarea:focus, button:focus {
 .site-title a:active {
     color: inherit;
 }
-.menu-gear {
-    display: none; /* Par défaut, caché */
-    width: 100px; 
-    height: 100px;
-    background-image: url('http://aymericbdev.local/wp-content/themes/twentytwentyone-child/assets-child/gear.png');; /* Image de l'écrou */
-    background-size: contain;
-    background-repeat: no-repeat;
-    margin: 10px auto; 
-    bottom: 10px;
-}
 
 /* Footer */
 .site-footer {
     height: 40px; 
     border-top: 1px solid #000000; 
-    margin: 30px 0px 0px 0px !important;
     padding-bottom: 10px !important;
     width: 100%;
     max-width: 100% !important;
@@ -229,8 +203,8 @@ input:focus, textarea:focus, button:focus {
 .site-title {
     font-family: 'Sora', monospace !important;
     font-weight: 700;
-
 }
+
 /* The Modal (background) */
 .modal {
     display: none;
@@ -325,7 +299,6 @@ input:focus, textarea:focus, button:focus {
     font-family: Poppins;
     font-weight: 400;
 }
-
 .wpcf7-form-control-wrap input, textarea
  {
     border-radius: 8px !important;
@@ -342,96 +315,89 @@ input:focus, textarea:focus, button:focus {
     font-weight: 400;
     text-decoration: none !important;
 }
-
-
-
-
+.entry-header {
+    align-items: center;
+    justify-content: center;
+    padding: 15px;
+    display: flex;
+;
+}
+.entry-title {
+    font-family: 'Sora', 'monospace';
+    font-weight: 400 bold;
+}   
 
 /* Gears décoration */
 .corner-nut {
     position: fixed;
-    width: 750px; /* Ajustez la taille selon vos besoins */
+    width: 750px;
     height: 750px;
     background-image: url('http://aymericbdev.local/wp-content/themes/twentytwentyone-child/assets-child/gear.png');
     background-size: contain;
     background-repeat: no-repeat;
-    z-index: 9999; /* Toujours au-dessus des autres éléments */
+    z-index: 9999;
     transform-origin: center;
-    pointer-events: none; /* L'utilisateur ne peut pas cliquer dessus */
+    pointer-events: none;
 }
-
 /* Coins spécifiques */
 .top-left {
     top: -500px;
     left: -500px;
 }
-
 .top-right {
     top: -500px;
     right: -500px;
 }
-
 .bottom-left {
     bottom: -500px;
     left: -500px;
 }
-
 .bottom-right {
     bottom: -500px;
     right: -500px;
 }
-
-/* Animation par défaut (écrous immobiles si pas de scroll) */
+/* Animation par défaut*/
 .corner-nut {
-    animation: none; /* Pas de rotation par défaut */
+    animation: none;
     transition: transform 1s ease; /* Transition pour rendre l'animation plus fluide */
 }
-
 /* Animation pour tourner vers la droite */
 @keyframes rotate-right {
     from {
         transform: rotate(0deg);
     }
     to {
-        transform: rotate(200deg); /* 1 tour complet */
+        transform: rotate(200deg); 
     }
 }
-
 /* Animation pour tourner vers la gauche */
 @keyframes rotate-left {
     from {
         transform: rotate(200deg);
     }
     to {
-        transform: rotate(0deg); /* 1 tour complet dans le sens inverse */
+        transform: rotate(0deg); 
     }
 }
-
 /* Applique les animations */
 .corner-nut.rotate-right {
-    animation: rotate-right 1s linear forwards; /* 1 seconde pour un tour complet */
+    animation: rotate-right 1s linear forwards;
 }
-
 .corner-nut.rotate-left {
-    animation: rotate-left 1s linear forwards; /* 1 seconde pour un tour complet */
+    animation: rotate-left 1s linear forwards; 
 }
-
-
-
 
 
 /* --- ACCUEIL --- */
-
 .blocks-container {
     display: flex;
-    flex-wrap: wrap; /* Permet aux blocs de passer à la ligne */
+    flex-wrap: wrap;
     gap: 20px;
     min-height: 10vw;
     justify-content: space-between; 
     align-items: flex-end;
     margin: 30px 20px;
 }
-
 .block {
     width: 30%;
     height: 600px;
@@ -449,14 +415,13 @@ input:focus, textarea:focus, button:focus {
     align-content: center;
     transform: translateY(100px); /* Position initiale en bas */
 }
-
-
+.block a {
+    text-decoration: none;
+}
 .block.visible {
     opacity: 1;
     transform: translateY(0); /* Remonte à la position originale */
 }
-
-
 /* Position initiale différente pour chaque bloc */
 #block1.visible {
     transform: translateY(-150px);
@@ -467,52 +432,31 @@ input:focus, textarea:focus, button:focus {
 #block3.visible {
     transform: translateY(-50px);
 }
-
-.blocks-container {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 20px;
-    padding: 20px;
-}
-
 /* Contenu des blocs */
 .content {
     opacity: 0;
     transition: opacity 2s ease-in-out;
     text-align: center;
-    position: relative; /* Nécessaire pour que le contenu s'affiche au-dessus de l'image */
-    z-index: 2; /* Place le contenu au-dessus de l'image */
-    padding: 20px; /* Ajoute de l'espace autour du texte */
-    background-color: rgba(255, 255, 255, 0.6); /* Couleur de fond semi-transparente pour lisibilité */
-    text-align: center; /* Centrage du texte */
+    position: relative; 
+    z-index: 2; 
+    padding: 20px; 
+    background-color: rgba(255, 255, 255, 0.6); 
+    text-align: center; 
 }
-
-
-
 /* Apparition des blocs */
 .block.visible {
     transform: translateY(0);
     opacity: 1;
 }
-
 /* Apparition du texte une fois le bloc stabilisé */
 .block.visible .content {
     opacity: 1;
 }
-
 .block.visible h2 {
     font-family: 'Sora', monospace;
     font-size: 30px;
     margin-bottom: 10px;
 }
-
-
-
-
-
-
-
-
 
 
 /* --- SIngle-image CSS --- */
@@ -570,7 +514,6 @@ input:focus, textarea:focus, button:focus {
     align-items: center; 
     width: 100%;
     gap: 20px;
-    border-bottom: 1px solid;
 }
 .bottom-interactions-block p {
     font-weight: 300;
@@ -656,24 +599,12 @@ input:focus, textarea:focus, button:focus {
 .next-link:hover .next-preview {
     display: block;
 }
-/* Bottom box-images apparentées et dans catalogue */
-.bottom-box {
-    display: flex; 
-    flex-direction: column;
-    width: 100%;
-    margin-top: 30px;
-}
-.bottom-box h3 {
-    font-family: 'Sora', monospace !important;
-    font-weight: 400;
-    text-transform: uppercase;
-    font-size: 18px;
-}
-/* Front page  */
+
+/* Front page ********************************************************************** */
 .hero {
     position: relative;
     width: 100%;
-    height: 30vh;
+    height: 40vh;
     background-size: cover;
     background-position: center;
     display: flex; 
@@ -772,11 +703,9 @@ select:focus, select option:checked {
     cursor: pointer;
     margin-left: 30px;
 }
-
 .reset-filters:focus {
     border: 1.3px solid #E00000;
 }
-
 .reset-filters:hover {
     background-color: #FFFFFF;
     color: #000000;
@@ -838,20 +767,7 @@ select:focus, select option:checked {
 .related-image-block:hover .view-icon {
     opacity: 1;
 }
-/* Icône plein écran en haut à droite */
-.related-image-block .fullscreen-icon {
-    top: 10px; 
-    right: 10px; 
-    font-size: 1.2em; 
-    width: 34px; 
-    height: 34px; 
-    background-color: rgba(0, 0, 0, 0.6); 
-    padding: 5px; 
-    border-radius: 50%; 
-    display: flex; 
-    align-items: center; 
-    justify-content: center;
-}
+
 /* Informations de la image en bas */
 .related-image-block .image-info {
     bottom: 0;
@@ -900,16 +816,6 @@ select:focus, select option:checked {
 }
 
 
-
-/* Conteneur de l'image */
-.image-info-container {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    max-width: 100%;
-}
-
 /* Styles généraux pour tous les écrans */
 /* Très grand écran */
 @media only screen and (max-width:1475px) {
@@ -931,7 +837,6 @@ select:focus, select option:checked {
     }
 }
 
-
 @media only screen and (max-width:910px) {
     .filter-container {
         flex-direction: column;
@@ -952,26 +857,21 @@ select:focus, select option:checked {
         margin: 0 18px;
     }
     .corner-nut {
-        width: 400px; /* Ajustez la taille selon vos besoins */
+        width: 400px;
         height: 400px;
     }
-    
-    /* Coins spécifiques */
     .top-left {
         top: -250px;
         left: -250px;
     }
-    
     .top-right {
         top: -250px;
         right: -250px;
     }
-    
     .bottom-left {
         bottom: -250px;
         left: -250px;
     }
-    
     .bottom-right {
         bottom: -250px;
         right: -250px;
@@ -1079,8 +979,8 @@ select:focus, select option:checked {
     .main-menu-class {
     justify-content: center;
     }
-
 }
+
 @media only screen and (max-width: 604px) {
     .modal-content {
         display: block;
@@ -1108,7 +1008,6 @@ select:focus, select option:checked {
     }
 }
 
-
 /* Petits appareils (téléphones en mode portrait, largeur max de 480px) */
 @media only screen and (max-width: 481px) {
     .site-header {
@@ -1117,9 +1016,9 @@ select:focus, select option:checked {
         height: 90px;
         width: 100%;
         text-decoration: none;
-        border-style: double; /* Style de la bordure */
-        border-width: 0 0 8px 0; /* Haut: 0, Droite: 8px, Bas: 8px, Gauche: 8px */
-        border-color: #000; /* Couleur de la bordure */
+        border-style: double;
+        border-width: 0 0 8px 0;
+        border-color: #000;
     }
     .site-title {
         font-size: 16px !important;
@@ -1159,10 +1058,10 @@ select:focus, select option:checked {
         margin-top: 40px;
     }
     .primary-menu-container a:hover {
-        font-weight: bold !important; /* Texte en gras */
+        font-weight: bold !important;
     }
     .block {
-        flex: 1 1 100%; /* Pleine largeur */
+        flex: 1 1 100%;
     }
     .corner-nut {
         display: none;
@@ -1170,13 +1069,13 @@ select:focus, select option:checked {
     .logo-menu-openanim .menu-gear {
         display: block !important;
         z-index: 501 !important;
-        animation: continuous-spin 2s linear infinite; /* Rotation continue */
-        width: 50px; /* Ajuste la taille */
+        animation: continuous-spin 2s linear infinite;
+        width: 50px;
         height: 50px;
         background-image: url('http://aymericbdev.local/wp-content/themes/twentytwentyone-child/assets-child/gear.png'); /* Lien vers ton image */
         background-size: contain;
         background-repeat: no-repeat;
-        margin: 10px auto; /* Centré */
+        margin: 10px auto;
         position: relative;
     }
     @keyframes continuous-spin {

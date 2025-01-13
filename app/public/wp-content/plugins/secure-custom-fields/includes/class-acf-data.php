@@ -26,7 +26,7 @@ if ( ! class_exists( 'ACF_Data' ) ) :
 		 * Sets up the class functionality.
 		 *
 		 * @date    9/1/19
-		 * @since   5.7.10
+		 * @since   ACF 5.7.10
 		 *
 		 * @param   array $data Optional data to set.
 		 * @return  void
@@ -51,9 +51,8 @@ if ( ! class_exists( 'ACF_Data' ) ) :
 		 * Called during constructor to setup class functionality.
 		 *
 		 * @date    9/1/19
-		 * @since   5.7.10
+		 * @since   ACF 5.7.10
 		 *
-		 * @param   void
 		 * @return  void
 		 */
 		function initialize() {
@@ -66,7 +65,7 @@ if ( ! class_exists( 'ACF_Data' ) ) :
 		 * Sets a property for the given name and returns $this for chaining.
 		 *
 		 * @date    9/1/19
-		 * @since   5.7.10
+		 * @since   ACF 5.7.10
 		 *
 		 * @param   (string|array) $name  The data name or an array of data.
 		 * @param   mixed          $value The data value.
@@ -87,7 +86,7 @@ if ( ! class_exists( 'ACF_Data' ) ) :
 		 * Returns a key for the given name allowing aliasses to work.
 		 *
 		 * @date    18/1/19
-		 * @since   5.7.10
+		 * @since   ACF 5.7.10
 		 *
 		 * @param   type $var Description. Default.
 		 * @return  type Description.
@@ -102,7 +101,7 @@ if ( ! class_exists( 'ACF_Data' ) ) :
 		 * Returns true if this has data for the given name.
 		 *
 		 * @date    9/1/19
-		 * @since   5.7.10
+		 * @since   ACF 5.7.10
 		 *
 		 * @param   string $name The data name.
 		 * @return  boolean
@@ -118,7 +117,7 @@ if ( ! class_exists( 'ACF_Data' ) ) :
 		 * Similar to has() but does not check aliases.
 		 *
 		 * @date    7/2/19
-		 * @since   5.7.11
+		 * @since   ACF 5.7.11
 		 *
 		 * @param   type $var Description. Default.
 		 * @return  type Description.
@@ -133,7 +132,7 @@ if ( ! class_exists( 'ACF_Data' ) ) :
 		 * Returns data for the given name of null if doesn't exist.
 		 *
 		 * @date    9/1/19
-		 * @since   5.7.10
+		 * @since   ACF 5.7.10
 		 *
 		 * @param   string $name The data name.
 		 * @return  mixed
@@ -157,9 +156,8 @@ if ( ! class_exists( 'ACF_Data' ) ) :
 		 * Returns an array of all data.
 		 *
 		 * @date    9/1/19
-		 * @since   5.7.10
+		 * @since   ACF 5.7.10
 		 *
-		 * @param   void
 		 * @return  array
 		 */
 		function get_data() {
@@ -172,7 +170,7 @@ if ( ! class_exists( 'ACF_Data' ) ) :
 		 * Sets data for the given name and returns $this for chaining.
 		 *
 		 * @date    9/1/19
-		 * @since   5.7.10
+		 * @since   ACF 5.7.10
 		 *
 		 * @param   (string|array) $name  The data name or an array of data.
 		 * @param   mixed          $value The data value.
@@ -199,7 +197,7 @@ if ( ! class_exists( 'ACF_Data' ) ) :
 		 * Appends data for the given name and returns $this for chaining.
 		 *
 		 * @date    9/1/19
-		 * @since   5.7.10
+		 * @since   ACF 5.7.10
 		 *
 		 * @param   mixed $value The data value.
 		 * @return  ACF_Data
@@ -219,7 +217,7 @@ if ( ! class_exists( 'ACF_Data' ) ) :
 		 * Removes data for the given name.
 		 *
 		 * @date    9/1/19
-		 * @since   5.7.10
+		 * @since   ACF 5.7.10
 		 *
 		 * @param   string $name The data name.
 		 * @return  ACF_Data
@@ -239,9 +237,8 @@ if ( ! class_exists( 'ACF_Data' ) ) :
 		 * Resets the data.
 		 *
 		 * @date    22/1/19
-		 * @since   5.7.10
+		 * @since   ACF 5.7.10
 		 *
-		 * @param   void
 		 * @return  void
 		 */
 		function reset() {
@@ -255,9 +252,8 @@ if ( ! class_exists( 'ACF_Data' ) ) :
 		 * Returns the data count.
 		 *
 		 * @date    23/1/19
-		 * @since   5.7.10
+		 * @since   ACF 5.7.10
 		 *
-		 * @param   void
 		 * @return  integer
 		 */
 		function count() {
@@ -270,9 +266,8 @@ if ( ! class_exists( 'ACF_Data' ) ) :
 		 * Returns a filtered array of data based on the set of key => value arguments.
 		 *
 		 * @date    23/1/19
-		 * @since   5.7.10
+		 * @since   ACF 5.7.10
 		 *
-		 * @param   void
 		 * @return  integer
 		 */
 		function query( $args, $operator = 'AND' ) {
@@ -285,7 +280,7 @@ if ( ! class_exists( 'ACF_Data' ) ) :
 		 * Sets an alias for the given name allowing data to be found via multiple identifiers.
 		 *
 		 * @date    18/1/19
-		 * @since   5.7.10
+		 * @since   ACF 5.7.10
 		 *
 		 * @param   type $var Description. Default.
 		 * @return  type Description.
@@ -311,7 +306,7 @@ if ( ! class_exists( 'ACF_Data' ) ) :
 		 * Triggered when switching between sites on a multisite installation.
 		 *
 		 * @date    13/2/19
-		 * @since   5.7.11
+		 * @since   ACF 5.7.11
 		 *
 		 * @param   integer                       $site_id New blog ID.
 		 * @param   int prev_blog_id Prev blog ID.

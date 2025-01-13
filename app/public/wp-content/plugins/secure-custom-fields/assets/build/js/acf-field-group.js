@@ -135,8 +135,8 @@
       } else {
         this.$el.find('.field-type-image').hide();
       }
-      const isPro = acf.get('is_pro');
-      const isActive = acf.get('isLicenseActive');
+      const isPro = true;
+      const isActive = true;
       const $upgateToProButton = this.$el.find('.acf-btn-pro');
       const $upgradeToUnlockButton = this.$el.find('.field-type-upgrade-to-unlock');
       if (args.pro && (!isPro || !isActive)) {
@@ -289,7 +289,7 @@
    *  Compatibility layer for extinct acf.field_group
    *
    *  @date	15/12/17
-   *  @since	5.7.0
+   *  @since	ACF 5.7.0
    *
    *  @param	void
    *  @return	void
@@ -320,7 +320,7 @@
    *  Compatibility layer for extinct acf.field_group.field_object
    *
    *  @date	15/12/17
-   *  @since	5.7.0
+   *  @since	ACF 5.7.0
    *
    *  @param	void
    *  @return	void
@@ -436,7 +436,7 @@
    *
    *  @type	function
    *  @date	21/02/2014
-   *  @since	3.5.1
+   *  @since	ACF 3.5.1
    *
    *  @param	n/a
    *  @return	n/a
@@ -512,7 +512,7 @@
    *  description
    *
    *  @date	3/2/18
-   *  @since	5.6.5
+   *  @since	ACF 5.6.5
    *
    *  @param	type $var Description. Default.
    *  @return	type Description.
@@ -838,7 +838,7 @@
    *  description
    *
    *  @date	20/4/18
-   *  @since	5.6.9
+   *  @since	ACF 5.6.9
    *
    *  @param	type $var Description. Default.
    *  @return	type Description.
@@ -1842,7 +1842,7 @@
    *  Returns a single fieldObject $el for a given field key
    *
    *  @date	1/2/18
-   *  @since	5.7.0
+   *  @since	ACF 5.7.0
    *
    *  @param	string key The field key
    *  @return	jQuery
@@ -1861,7 +1861,7 @@
    *  Returns an array of fieldObject $el for the given args
    *
    *  @date	1/2/18
-   *  @since	5.7.0
+   *  @since	ACF 5.7.0
    *
    *  @param	object args
    *  @return	jQuery
@@ -1928,7 +1928,7 @@
    *  Returns a single fieldObject instance for a given $el|key
    *
    *  @date	1/2/18
-   *  @since	5.7.0
+   *  @since	ACF 5.7.0
    *
    *  @param	string|jQuery $field The field $el or key
    *  @return	jQuery
@@ -1956,7 +1956,7 @@
    *  Returns an array of fieldObject instances for the given args
    *
    *  @date	1/2/18
-   *  @since	5.7.0
+   *  @since	ACF 5.7.0
    *
    *  @param	object args
    *  @return	array
@@ -1983,7 +1983,7 @@
    *  Initializes and returns a new FieldObject instance
    *
    *  @date	1/2/18
-   *  @since	5.7.0
+   *  @since	ACF 5.7.0
    *
    *  @param	jQuery $field The field $el
    *  @return	object
@@ -2006,7 +2006,7 @@
    *  description
    *
    *  @date	15/12/17
-   *  @since	5.6.5
+   *  @since	ACF 5.6.5
    *
    *  @param	type $var Description. Default.
    *  @return	type Description.
@@ -2098,7 +2098,7 @@
    *  description
    *
    *  @date	4/1/18
-   *  @since	5.6.5
+   *  @since	ACF 5.6.5
    *
    *  @param	type $var Description. Default.
    *  @return	type Description.
@@ -2305,7 +2305,7 @@
    *  Field group location rules functionality
    *
    *  @date	15/12/17
-   *  @since	5.7.0
+   *  @since	ACF 5.7.0
    *
    *  @param	void
    *  @return	void
@@ -2424,7 +2424,7 @@
    *  Calculates the model ID for a field type
    *
    *  @date	15/12/17
-   *  @since	5.6.5
+   *  @since	ACF 5.6.5
    *
    *  @param	string type
    *  @return	string
@@ -2440,7 +2440,7 @@
    *  description
    *
    *  @date	14/12/17
-   *  @since	5.6.5
+   *  @since	ACF 5.6.5
    *
    *  @param	type $var Description. Default.
    *  @return	type Description.
@@ -2458,7 +2458,7 @@
    *  description
    *
    *  @date	14/12/17
-   *  @since	5.6.5
+   *  @since	ACF 5.6.5
    *
    *  @param	type $var Description. Default.
    *  @return	type Description.
@@ -2487,7 +2487,7 @@
    *  description
    *
    *  @date	19/4/18
-   *  @since	5.6.9
+   *  @since	ACF 5.6.9
    *
    *  @param	type $var Description. Default.
    *  @return	type Description.
@@ -2506,7 +2506,7 @@
   /**
    * settingsManager
    *
-   * @since	5.6.5
+   * @since	ACF 5.6.5
    *
    * @param	object The object containing the extended variables and methods.
    * @return	void
@@ -2523,7 +2523,7 @@
   /**
    * acf.FieldSetting
    *
-   * @since	5.6.5
+   * @since	ACF 5.6.5
    *
    * @param	object The object containing the extended variables and methods.
    * @return	void
@@ -2564,7 +2564,7 @@
    * The 'endpoint' setting on accordions and tabs requires an additional class on the
    * field object row when enabled.
    *
-   * @since	6.0.0
+   * @since	ACF 6.0.0
    *
    * @param	object The object containing the extended variables and methods.
    * @return	void
@@ -2598,7 +2598,7 @@
    *
    * This field type requires some extra logic for its settings
    *
-   * @since	5.0.0
+   * @since	ACF 5.0.0
    *
    * @param	object The object containing the extended variables and methods.
    * @return	void
@@ -2629,7 +2629,7 @@
    *
    * This field type requires some extra logic for its settings
    *
-   * @since	5.0.0
+   * @since	ACF 5.0.0
    *
    * @param	object The object containing the extended variables and methods.
    * @return	void
@@ -2650,7 +2650,7 @@
    *
    * This field type requires some extra logic for its settings
    *
-   * @since	5.0.0
+   * @since	ACF 5.0.0
    *
    * @param	object The object containing the extended variables and methods.
    * @return	void
@@ -2670,7 +2670,7 @@
    * Color Picker Settings.
    *
    * @date	16/12/20
-   * @since	5.9.4
+   * @since	ACF 5.9.4
    *
    * @param	object The object containing the extended variables and methods.
    * @return	void
@@ -2711,7 +2711,7 @@
    *  Generic field group functionality
    *
    *  @date	15/12/17
-   *  @since	5.7.0
+   *  @since	ACF 5.7.0
    *
    *  @param	void
    *  @return	void
@@ -2867,7 +2867,7 @@
    *  Screen options functionality
    *
    *  @date	15/12/17
-   *  @since	5.7.0
+   *  @since	ACF 5.7.0
    *
    *  @param	void
    *  @return	void
@@ -2964,7 +2964,7 @@
    *  Appends fields together
    *
    *  @date	15/12/17
-   *  @since	5.7.0
+   *  @since	ACF 5.7.0
    *
    *  @param	void
    *  @return	void

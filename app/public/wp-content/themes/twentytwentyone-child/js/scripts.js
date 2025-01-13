@@ -23,28 +23,23 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 } )
 
-
-
+// Pour le scrolling des blocs de présentation //
 document.addEventListener('scroll', () => {
     const blocks = document.querySelectorAll('.block');
 
     blocks.forEach((block, index) => {
         const rect = block.getBoundingClientRect();
-
         // Si le bloc est visible dans la fenêtre
         if (rect.top < window.innerHeight && rect.bottom > 0) {
             const scrollPosition = window.scrollY || document.documentElement.scrollTop;
-
             // Multiplier la vitesse en fonction de l'index (effet inversé)
-            const speedMultiplier = (blocks.length - index) * 0.1; // Le dernier bloc est le plus lent
+            const speedMultiplier = (blocks.length - index) * 0.1;
             const offset = (scrollPosition - block.offsetTop) * speedMultiplier;
-
             // Appliquer une translation pour effet vers le bas/haut
             block.style.transform = `translateY(${offset}px)`;
         }
     });
 });
-
 // Observer les blocs pour l'animation d'apparition
 const observer = new IntersectionObserver(
     (entries) => {
@@ -56,26 +51,16 @@ const observer = new IntersectionObserver(
     },
     { threshold: 0.5 } // Visible à 50% avant d'apparaître
 );
-
 document.querySelectorAll('.block').forEach((block) => observer.observe(block));
-
-
-
-
-
-
-
+// Pour le scrolling des roues dentées //
 document.addEventListener('DOMContentLoaded', function () {
     const gearsLeft = document.querySelectorAll('.corner-nut.top-left, .corner-nut.bottom-left');
     const gearsRight = document.querySelectorAll('.corner-nut.top-right, .corner-nut.bottom-right'); //
     let lastScrollTop = 0; // Position précédente du scroll
-
     // Fonction pour détecter la direction du défilement
     function handleScroll() {
-        console.log('Scroll détecté');
         const currentScrollTop = window.scrollY || document.documentElement.scrollTop;
         const isScrollingDown = currentScrollTop > lastScrollTop;
-
         // Gestion des roues à gauche
         gearsLeft.forEach(gear => {
             gear.classList.remove('rotate-left', 'rotate-right');
@@ -94,34 +79,26 @@ document.addEventListener('DOMContentLoaded', function () {
                 gear.classList.add('rotate-right');
             }
         });
-
         setTimeout(() => {
             gearsLeft.forEach(gear => gear.classList.remove('rotate-left', 'rotate-right'));
             gearsRight.forEach(gear => gear.classList.remove('rotate-left', 'rotate-right'));
         }, 1000);
-
         lastScrollTop = currentScrollTop <= 0 ? 0 : currentScrollTop; // Empêche les valeurs négatives
     }
-
     // Ajouter un écouteur pour le défilement
     window.addEventListener('scroll', handleScroll);
 });
 
-
-
-
-
-
-jQuery(document).ready(function($) {
+// Ajax et filtres //
+jQuery(document).ready(function ($) {
     // Fonction pour charger les images avec filtrage
     function loadImages(page = 1) {
         let category = $('#category-filter').val();
         let projet = $('#projet-filter').val();
         let dateOrder = $('#date-order').val() || 'DESC'; // Valeur par défaut pour le tri
-        
         // Requête AJAX
         $.ajax({
-            url: child_style_js.ajax_url,  // URL pour l'admin-ajax.php
+            url: child_style_js.ajax_url, // URL pour l'admin-ajax.php
             type: 'POST',
             data: {
                 action: 'filter_images',
@@ -130,14 +107,12 @@ jQuery(document).ready(function($) {
                 date_order: dateOrder,
                 page: page,
             },
-            success: function(response) {
+            success: function (response) {
                 if (response.success) {
                     // Vider la grille avant d'ajouter de nouvelles images si on est sur la page 1
                     if (page === 1) $('.image-grid').empty();
-                    
                     // Ajouter les images retournées par la requête
                     $('.image-grid').append(response.data.content);
-                    
                     // Si toutes les images ont été chargées, masquer le bouton "Charger plus"
                     if (response.data.images_loaded >= response.data.total_images) {
                         $('#load-more').hide();
@@ -150,31 +125,30 @@ jQuery(document).ready(function($) {
                     $('#load-more').hide();
                 }
             },
-            error: function(error) {
-                console.log('Erreur AJAX:', error);  // Afficher l'erreur dans la console
+            error: function (error) {
+                console.log('Erreur AJAX:', error); // Afficher l'erreur dans la console
             }
         });
     }
 
     // Lors de la modification des filtres, recharger les images depuis la première page
-    $('#category-filter, #projet-filter, #date-order').on('change', function() {
+    $('#category-filter, #projet-filter, #date-order').on('change', function () {
         loadImages(1);
     });
-
     // Lors du clic sur "Charger plus", charger la page suivante
-    $('#load-more').on('click', function() {
-        let page = $(this).data('page') || 1;  // Récupérer la page actuelle
+    $('#load-more').on('click', function () {
+        let page = $(this).data('page') || 1; // Récupérer la page actuelle
         loadImages(page);
     });
-        // Gérer le bouton de réinitialisation
-    $('#reset-filters').on('click', function () {
+    // Gérer le bouton de réinitialisation
+    $('.reset-filters').on('click', function () {
         $('#category-filter').val('');
         $('#projet-filter').val('');
         $('#date-order').val('');
+        $('#load-more').data('page', 1); // Réinitialiser la pagination
         loadImages(1); // Recharge les images avec les filtres réinitialisés
     });
 });
-
 
 //Animation et classes du menu sous media query
 document.addEventListener('DOMContentLoaded', function () {
@@ -186,7 +160,6 @@ document.addEventListener('DOMContentLoaded', function () {
         menuToggle.addEventListener('click', function () {
             // Basculer la classe 'menu-open' sur le menu
             const isOpen = menu.classList.toggle('menu-open');
-
             // Basculer la classe 'logo-menu-openanim' sur le logo
             if (isOpen) {
                 logo.classList.add('logo-menu-openanim');

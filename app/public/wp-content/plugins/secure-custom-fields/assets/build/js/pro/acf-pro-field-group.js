@@ -14,7 +14,7 @@
    *  Extra logic for this field setting
    *
    *  @date	18/4/18
-   *  @since	5.6.9
+   *  @since	ACF 5.6.9
    *
    *  @param	void
    *  @return	void
@@ -39,7 +39,7 @@
    *  Extra logic for this field setting
    *
    *  @date	18/4/18
-   *  @since	5.6.9
+   *  @since	ACF 5.6.9
    *
    *  @param	void
    *  @return	void
@@ -69,7 +69,7 @@
    *  Extra logic for this field setting
    *
    *  @date	18/4/18
-   *  @since	5.6.9
+   *  @since	ACF 5.6.9
    *
    *  @param	void
    *  @return	void
@@ -99,7 +99,7 @@
    *  Customizes the clone field setting Select2 isntance
    *
    *  @date	18/4/18
-   *  @since	5.6.9
+   *  @since	ACF 5.6.9
    *
    *  @param	void
    *  @return	void
@@ -161,7 +161,7 @@
    *  Extra logic for this field setting
    *
    *  @date	18/4/18
-   *  @since	5.6.9
+   *  @since	ACF 5.6.9
    *
    *  @param	void
    *  @return	void
@@ -487,7 +487,7 @@
    *  description
    *
    *  @date	19/4/18
-   *  @since	5.6.9
+   *  @since	ACF 5.6.9
    *
    *  @param	type $var Description. Default.
    *  @return	type Description.
@@ -539,7 +539,7 @@
    *
    *  @type	function
    *  @date	24/10/13
-   *  @since	5.0.0
+   *  @since	ACF 5.0.0
    *
    *  @param	n/a
    *  @return	n/a

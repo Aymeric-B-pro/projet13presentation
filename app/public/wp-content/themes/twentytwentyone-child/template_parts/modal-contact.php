@@ -15,5 +15,4 @@
         echo do_shortcode('[contact-form-7 id="a5911a8" title="Contactez-moi"]');
         ?>
   </div>
-
 </div>

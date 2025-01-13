@@ -366,3 +366,17 @@ Stack trace:
 [13-Jan-2025 14:23:29 UTC] PHP Warning:  Attempt to read property "name" on array in D:\localsites\aymericbdev\app\public\wp-content\themes\twentytwentyone-child\page-galerie.php on line 40
 [13-Jan-2025 14:23:29 UTC] PHP Warning:  Attempt to read property "term_id" on array in D:\localsites\aymericbdev\app\public\wp-content\themes\twentytwentyone-child\page-galerie.php on line 40
 [13-Jan-2025 14:23:29 UTC] PHP Warning:  Attempt to read property "name" on array in D:\localsites\aymericbdev\app\public\wp-content\themes\twentytwentyone-child\page-galerie.php on line 40
+[13-Jan-2025 17:59:36 UTC] PHP Fatal error:  Uncaught Error: Class "SCF" not found in D:\localsites\aymericbdev\app\public\wp-content\themes\twentytwentyone-child\single-image.php:20
+Stack trace:
+#0 D:\localsites\aymericbdev\app\public\wp-includes\template-loader.php(106): include()
+#1 D:\localsites\aymericbdev\app\public\wp-blog-header.php(19): require_once('D:\\localsites\\a...')
+#2 D:\localsites\aymericbdev\app\public\index.php(17): require('D:\\localsites\\a...')
+#3 {main}
+  thrown in D:\localsites\aymericbdev\app\public\wp-content\themes\twentytwentyone-child\single-image.php on line 20
+[13-Jan-2025 18:01:07 UTC] PHP Fatal error:  Uncaught Error: Class "SCF" not found in D:\localsites\aymericbdev\app\public\wp-content\themes\twentytwentyone-child\single-image.php:20
+Stack trace:
+#0 D:\localsites\aymericbdev\app\public\wp-includes\template-loader.php(106): include()
+#1 D:\localsites\aymericbdev\app\public\wp-blog-header.php(19): require_once('D:\\localsites\\a...')
+#2 D:\localsites\aymericbdev\app\public\index.php(17): require('D:\\localsites\\a...')
+#3 {main}
+  thrown in D:\localsites\aymericbdev\app\public\wp-content\themes\twentytwentyone-child\single-image.php on line 20

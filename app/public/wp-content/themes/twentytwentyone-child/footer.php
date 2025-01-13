@@ -38,7 +38,6 @@
     <?php else : ?>
         <p style="color: red;">No footer menu assigned</p>
     <?php endif; ?>
-
     <?php get_template_part('template_parts/rotating-gears'); ?>
     <?php wp_footer(); ?>
     <?php get_template_part('template_parts/modal-contact'); ?>

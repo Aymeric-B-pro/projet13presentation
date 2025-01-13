@@ -1,6 +1,6 @@
 <?php
 /**
- * Template Name : single-photo
+ * Template Name : single-image
  * @package WordPress
  * @subpackage Twenty_Twenty_One
  * @since Twenty Twenty-One 1.0
@@ -17,7 +17,7 @@ if ( have_posts() ) : while ( have_posts() ) : the_post();
         <div class="bloc-top" >
             <div class="left-info-block">
                 <h2><?php the_title(); ?></h2>
-                <p>REFERENCE : <?php the_field('projet');?></p>
+                <p>DESCRIPTION : <?php the_field('description');?></p>
                 <p>LANGAGE PRINCIPALE : <?php the_terms($post->ID, 'langage');?></p>
                 <p>PROJET : <?php the_terms($post->ID, 'projet');?></p>
                 <p>ANNÉE : <?php echo get_the_date();?></p>
@@ -69,37 +69,6 @@ if ( have_posts() ) : while ( have_posts() ) : the_post();
                     &rarr;
                     <span class="nav-preview next-preview" style="background-image: url('<?php echo get_the_post_thumbnail_url($next_post, 'thumbnail'); ?>');"></span>
                 </a>
-            </div>
-        </div>
-        <div class="bottom-box">
-            <h3>Vous aimerez aussi</h3>
-            <div class="image-grid">
-                <?php
-                $terms = wp_get_post_terms(get_the_ID(), 'langage');
-                if (!empty($terms) && !is_wp_error($terms)) {
-                    $term = $terms[0];
-                    $args = array(
-                        'post_type'      => 'image',
-                        'posts_per_page' => 2,
-                        'post__not_in'   => array(get_the_ID()), // Exclure la image courante
-                        'tax_query'      => array(
-                            array(
-                                'taxonomy' => 'langage',
-                                'field'    => 'term_id',
-                                'terms'    => $term->term_id,
-                            ),
-                        ),
-                    );
-                    $related_images = new WP_Query($args);
-                    if ($related_images->have_posts()) :
-                        while ($related_images->have_posts()) : $related_images->the_post();
-                            $photo_id = get_the_ID();
-                            get_template_part('template_parts/photo_block', null, array('image_id' => $image_id));
-                        endwhile;
-                        wp_reset_postdata();
-                    endif;
-                    }
-                    ?>
             </div>
         </div>
     <?php
