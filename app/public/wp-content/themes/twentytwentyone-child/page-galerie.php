@@ -1,6 +1,6 @@
 <?php
 /**
- * Template Name: Galerie
+ * Template Name: Galerie des projets
  * Description: Page des projets.
  */
 get_header();
