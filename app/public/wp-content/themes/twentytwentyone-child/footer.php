@@ -40,21 +40,6 @@
     <?php endif; ?>
 
     <?php get_template_part('template_parts/rotating-gears'); ?>
-    <!-- Lightbox structure -->
-    <div id="lightbox" class="lightbox" style="display: none;">
-        <button class="closelightbox" id="closelightbox">&times;</button>
-        <div class="lightbox-flex-container">
-            <button class="nav-linklight prev-linklight" id="prev-linklight">&larr; Précédente</button>
-            <div class="image-info-container">
-                <img src="" id="lightbox-image" alt="Lightbox Image">
-                <div class="lightbox-info">
-                    <span class="photo-ref" id="lightbox-ref"></span>
-                    <span class="photo-category" id="lightbox-category"></span>
-                </div>
-            </div>
-            <button class="nav-linklight next-linklight" id="next-linklight">Suivante &rarr;</button>
-        </div>
-    </div>
     <?php wp_footer(); ?>
     <?php get_template_part('template_parts/modal-contact'); ?>
 </footer>

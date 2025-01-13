@@ -24,10 +24,6 @@ function enqueue_font_awesome() {
 }
 add_action('wp_enqueue_scripts', 'enqueue_font_awesome');
 
-function enqueue_lightbox_script() {
-    wp_enqueue_script('lightbox', get_stylesheet_directory_uri() . '/js/lightbox.js', array('jquery'), null, true);
-}
-add_action('wp_enqueue_scripts', 'enqueue_lightbox_script');
 
 function register_my_menus() {
     register_nav_menus( array(
@@ -37,138 +33,112 @@ function register_my_menus() {
 }
 add_action( 'after_setup_theme', 'register_my_menus' );
 
-function motaphoto_request_photos() {
+function projetdev_request_images() {
     $args = array(
-        'post_type'      => 'photo',
+        'post_type'      => 'image',
         'posts_per_page' => 8 
     );
-    
     $query = new WP_Query($args);
-
     if($query->have_posts()) {
         $response = $query->posts;
     } else {
         $response = false;
     }
-
     wp_send_json($response);
     wp_die();
 }
 
-add_action( 'wp_ajax_request_photos', 'motaphoto_request_photos' ); 
-add_action( 'wp_ajax_nopriv_request_photos', 'motaphoto_request_photos' );
-
-function get_random_photo_background() {
-    $args = array(
-        'post_type'      => 'photo', 
-        'posts_per_page' => 1,        
-        'orderby'        => 'rand'    
-    );
-    
-    $random_photo = new WP_Query($args);
-
-    if ($random_photo->have_posts()) {
-        while ($random_photo->have_posts()) : $random_photo->the_post();
-            $photo_url = get_the_post_thumbnail_url(get_the_ID(), 'full');
-            return $photo_url;
-        endwhile;
-    }
-}
-
-function load_more_photos() {
+function load_more_images() {
     $paged = isset($_POST['page']) ? intval($_POST['page']) : 1;
-    $total_photos_query = new WP_Query(array(
-        'post_type' => 'photo',
+    $total_images_query = new WP_Query(array(
+        'post_type' => 'image',
         'posts_per_page' => -1,
     ));
-    $total_photos = $total_photos_query->found_posts;
+    $total_images = $total_images_query->found_posts;
     $args = array(
-        'post_type'      => 'photo',
+        'post_type'      => 'image',
         'posts_per_page' => 8,
         'paged'          => $paged,
         'orderby'        => 'date',
         'order'          => 'DESC', 
     );
-    $photo_query = new WP_Query($args);
-    if ($photo_query->have_posts()) {
+    $image_query = new WP_Query($args);
+    if ($image_query->have_posts()) {
         ob_start();
-        while ($photo_query->have_posts()) {
-            $photo_query->the_post();
-            get_template_part('template_parts/photo_block', null, array('photo_id' => get_the_ID()));
+        while ($image_query->have_posts()) {
+            $image_query->the_post();
+            get_template_part('template_parts/photo_block', null, array('image_id' => get_the_ID()));
         }
         $content = ob_get_clean();
         wp_send_json_success(array(
             'content' => $content,
-            'total_photos' => $total_photos,
-            'photos_loaded' => $paged * 8    // Calculer le nombre de photos chargées
+            'total_images' => $total_images,
+            'images_loaded' => $paged * 8    // Calculer le nombre de images chargées
         ));
     } else {
-        wp_send_json_error('Aucune photo supplémentaire.');
+        wp_send_json_error('Aucune image supplémentaire.');
     }
     wp_reset_postdata();
     wp_die();
 }
 
-
-function filter_photos() {
+function filter_images() {
     // Récupérer les paramètres des filtres transmis via AJAX
     $category = isset($_POST['category']) ? intval($_POST['category']) : '';
-    $format = isset($_POST['format']) ? intval($_POST['format']) : '';
+    $projet = isset($_POST['projet']) ? intval($_POST['projet']) : '';
     $date_order = isset($_POST['date_order']) ? sanitize_text_field($_POST['date_order']) : 'DESC';
     $page = isset($_POST['page']) ? intval($_POST['page']) : 1;
     // Arguments de la requête principale
     $args = array(
-        'post_type' => 'photo',
+        'post_type' => 'image',
         'posts_per_page' => 8,
         'paged' => $page,
         'orderby' => 'date',
         'order' => $date_order,
     );
-
-    // Ajout des filtres de catégorie et de format si sélectionnés
+    // Ajout des filtres de catégorie et de projet si sélectionnés
     if ($category) {
         $args['tax_query'][] = array(
-            'taxonomy' => 'categorie',
+            'taxonomy' => 'langage',
             'field'    => 'term_id',
             'terms'    => $category,
         );
     }
-    if ($format) {
+    if ($projet) {
         $args['tax_query'][] = array(
-            'taxonomy' => 'format',
+            'taxonomy' => 'projet',
             'field'    => 'term_id',
-            'terms'    => $format,
+            'terms'    => $projet,
         );
     }
     // Exécuter la requête WP_Query avec les arguments filtrés
-    $photo_query = new WP_Query($args);
-    // Compter le nombre total de photos pour gérer le bouton "Load More"
-    $total_photos_query = new WP_Query(array(
-        'post_type' => 'photo',
+    $image_query = new WP_Query($args);
+    // Compter le nombre total de images pour gérer le bouton "Load More"
+    $total_images_query = new WP_Query(array(
+        'post_type' => 'image',
         'posts_per_page' => -1,
         'tax_query' => $args['tax_query'] ?? [],
     ));
-    $total_photos = $total_photos_query->found_posts;
+    $total_images = $total_images_query->found_posts;
 
-    // Récupération des résultats pour les photos
-    if ($photo_query->have_posts()) {
+    // Récupération des résultats pour les images
+    if ($image_query->have_posts()) {
         ob_start();
-        while ($photo_query->have_posts()) {
-            $photo_query->the_post();
-            get_template_part('template_parts/photo_block', null, array('photo_id' => get_the_ID()));
+        while ($image_query->have_posts()) {
+            $image_query->the_post();
+            get_template_part('template_parts/photo_block', null, array('image_id' => get_the_ID()));
         }
         $content = ob_get_clean();
         wp_send_json_success(array(
             'content' => $content,
-            'total_photos' => $total_photos,
-            'photos_loaded' => $page * 8
+            'total_images' => $total_images,
+            'images_loaded' => $page * 8
         ));
     } else {
-        wp_send_json_error('Aucune photo trouvée.');
+        wp_send_json_error('Aucune image trouvée.');
     }
     wp_reset_postdata();
     wp_die();
 }
-
-add_action('wp_ajax_filter_photos', 'filter_photos');
+add_action('wp_ajax_filter_images', 'filter_images');
 ?>

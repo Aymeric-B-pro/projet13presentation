@@ -24,37 +24,50 @@ document.addEventListener('DOMContentLoaded', function() {
 } )
 
 
-// Sélectionner tous les blocs
-const blocks = document.querySelectorAll('.block');
 
-// Fonction d'activation lorsque l'élément est visible
-const handleIntersection = (entries, observer) => {
-    entries.forEach(entry => {
-        if (entry.isIntersecting) {
-            // Ajoute la classe 'visible' lorsque l'élément est visible
-            entry.target.classList.add('visible');
-            // On arrête l'observation de cet élément une fois qu'il est visible
-            observer.unobserve(entry.target);
+document.addEventListener('scroll', () => {
+    const blocks = document.querySelectorAll('.block');
+
+    blocks.forEach((block, index) => {
+        const rect = block.getBoundingClientRect();
+
+        // Si le bloc est visible dans la fenêtre
+        if (rect.top < window.innerHeight && rect.bottom > 0) {
+            const scrollPosition = window.scrollY || document.documentElement.scrollTop;
+
+            // Multiplier la vitesse en fonction de l'index (effet inversé)
+            const speedMultiplier = (blocks.length - index) * 0.1; // Le dernier bloc est le plus lent
+            const offset = (scrollPosition - block.offsetTop) * speedMultiplier;
+
+            // Appliquer une translation pour effet vers le bas/haut
+            block.style.transform = `translateY(${offset}px)`;
         }
     });
-};
-
-// Créer une instance d'IntersectionObserver
-const observer = new IntersectionObserver(handleIntersection, {
-    threshold: 0.5, // Observer lorsque 50% du bloc est visible
-    rootMargin: '0px 0px -50px 0px' // Déclenche l'observation un peu avant l'élément
 });
 
-// Observer chaque bloc
-blocks.forEach(block => {
-    observer.observe(block);
-});
+// Observer les blocs pour l'animation d'apparition
+const observer = new IntersectionObserver(
+    (entries) => {
+        entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('visible');
+            }
+        });
+    },
+    { threshold: 0.5 } // Visible à 50% avant d'apparaître
+);
+
+document.querySelectorAll('.block').forEach((block) => observer.observe(block));
+
+
+
+
 
 
 
 document.addEventListener('DOMContentLoaded', function () {
-    const gearsLeft = document.querySelectorAll('.corner-nut.top-left, .corner-nut.bottom-left'); // Roues à gauche
-    const gearsRight = document.querySelectorAll('.corner-nut.top-right, .corner-nut.bottom-right'); // Roues à droite
+    const gearsLeft = document.querySelectorAll('.corner-nut.top-left, .corner-nut.bottom-left');
+    const gearsRight = document.querySelectorAll('.corner-nut.top-right, .corner-nut.bottom-right'); //
     let lastScrollTop = 0; // Position précédente du scroll
 
     // Fonction pour détecter la direction du défilement
@@ -65,29 +78,27 @@ document.addEventListener('DOMContentLoaded', function () {
 
         // Gestion des roues à gauche
         gearsLeft.forEach(gear => {
-            gear.classList.remove('rotate-left', 'rotate-right'); // Réinitialiser les classes
+            gear.classList.remove('rotate-left', 'rotate-right');
             if (isScrollingDown) {
-                gear.classList.add('rotate-right'); // Vers la droite en descendant
+                gear.classList.add('rotate-right');
             } else {
-                gear.classList.add('rotate-left'); // Vers la gauche en montant
+                gear.classList.add('rotate-left');
             }
         });
-
         // Gestion des roues à droite
         gearsRight.forEach(gear => {
-            gear.classList.remove('rotate-left', 'rotate-right'); // Réinitialiser les classes
+            gear.classList.remove('rotate-left', 'rotate-right');
             if (isScrollingDown) {
-                gear.classList.add('rotate-left'); // Vers la gauche en descendant
+                gear.classList.add('rotate-left');
             } else {
-                gear.classList.add('rotate-right'); // Vers la droite en montant
+                gear.classList.add('rotate-right');
             }
         });
 
-        // Retirer les classes après l'animation
         setTimeout(() => {
             gearsLeft.forEach(gear => gear.classList.remove('rotate-left', 'rotate-right'));
             gearsRight.forEach(gear => gear.classList.remove('rotate-left', 'rotate-right'));
-        }, 1000); // Durée de l'animation (1s)
+        }, 1000);
 
         lastScrollTop = currentScrollTop <= 0 ? 0 : currentScrollTop; // Empêche les valeurs négatives
     }
@@ -102,27 +113,36 @@ document.addEventListener('DOMContentLoaded', function () {
 
 
 jQuery(document).ready(function($) {
-    function loadPhotos(page = 1) {
+    // Fonction pour charger les images avec filtrage
+    function loadImages(page = 1) {
         let category = $('#category-filter').val();
-        let format = $('#format-filter').val();
+        let projet = $('#projet-filter').val();
         let dateOrder = $('#date-order').val() || 'DESC'; // Valeur par défaut pour le tri
+        
+        // Requête AJAX
         $.ajax({
-            url: child_style_js.ajax_url,
+            url: child_style_js.ajax_url,  // URL pour l'admin-ajax.php
             type: 'POST',
             data: {
-                action: 'filter_photos',
+                action: 'filter_images',
                 category: category,
-                format: format,
+                projet: projet,
                 date_order: dateOrder,
                 page: page,
             },
             success: function(response) {
                 if (response.success) {
-                    if (page === 1) $('.photo-grid').empty();
-                    $('.photo-grid').append(response.data.content);
-                    if (response.data.photos_loaded >= response.data.total_photos) {
+                    // Vider la grille avant d'ajouter de nouvelles images si on est sur la page 1
+                    if (page === 1) $('.image-grid').empty();
+                    
+                    // Ajouter les images retournées par la requête
+                    $('.image-grid').append(response.data.content);
+                    
+                    // Si toutes les images ont été chargées, masquer le bouton "Charger plus"
+                    if (response.data.images_loaded >= response.data.total_images) {
                         $('#load-more').hide();
                     } else {
+                        // Mettre à jour la page pour le prochain chargement
                         $('#load-more').data('page', page + 1);
                         $('#load-more').show();
                     }
@@ -131,44 +151,36 @@ jQuery(document).ready(function($) {
                 }
             },
             error: function(error) {
-                // Erreur AJAX gérée silencieusement sans log
+                console.log('Erreur AJAX:', error);  // Afficher l'erreur dans la console
             }
         });
     }
 
-    $('#category-filter, #format-filter, #date-order').on('change', function() {
-        loadPhotos(1);
+    // Lors de la modification des filtres, recharger les images depuis la première page
+    $('#category-filter, #projet-filter, #date-order').on('change', function() {
+        loadImages(1);
     });
 
+    // Lors du clic sur "Charger plus", charger la page suivante
     $('#load-more').on('click', function() {
-        let page = $(this).data('page') || 1;
-        loadPhotos(page);
+        let page = $(this).data('page') || 1;  // Récupérer la page actuelle
+        loadImages(page);
+    });
+        // Gérer le bouton de réinitialisation
+    $('#reset-filters').on('click', function () {
+        $('#category-filter').val('');
+        $('#projet-filter').val('');
+        $('#date-order').val('');
+        loadImages(1); // Recharge les images avec les filtres réinitialisés
     });
 });
 
-//Récupération Ref Photo
-jQuery(document).ready(function($) {
-    $('.contactlink').on('click', function(event) {
-        event.preventDefault(); // Empêche le comportement par défaut de l'ancre
-        var refPhoto = $(this).data('ref-photo');
-        $('input[name="your-subject"]').val(refPhoto);
-        $('#myModal').fadeIn();
-    });
-    $('.close-button').on('click', function() {
-        $('#myModal').fadeOut();
-    });
-    $(window).on('click', function(event) {
-        if ($(event.target).is('#myModal')) {
-            $('#myModal').fadeOut();
-        }
-    });
-});
 
 //Animation et classes du menu sous media query
 document.addEventListener('DOMContentLoaded', function () {
     const menuToggle = document.querySelector('#primary-mobile-menu');
     const menu = document.querySelector('#site-navigation');
-    const logo = document.querySelector('.site-logo');
+    const logo = document.querySelector('.site-branding');
 
     if (menuToggle && menu && logo) {
         menuToggle.addEventListener('click', function () {

@@ -3,41 +3,40 @@
  * Template Name: Galerie
  * Description: Page des projets.
  */
-
 get_header();
 ?>
 <main class="home-page">
-    <section class="hero" style="background-image: url('<?php echo get_random_photo_background(); ?>');">
+    <section class="hero">
         <div class="hero-content">
-            <h1>PHOTOGRAPHE EVENT</h1>
+            <h1>Les Projets</h1>
         </div>
     </section>
-    <section class="photo-catalogue">
+    <section class="image-catalogue">
         <div class="filter-container">
             <div class="filter-group">
                 <select id="category-filter">
-                    <option value="">Catégories</option>
+                    <option value="">Langages</option>
                     <?php
-                    $categories = get_terms(array(
-                        'taxonomy' => 'categorie',
+                    $langages = get_terms(array(
+                        'taxonomy' => 'langage',
                         'hide_empty' => true,
                     ));
 
-                    foreach ($categories as $category) {
+                    foreach ($langages as $category) {
                         echo '<option value="' . esc_attr($category->term_id) . '">' . esc_html($category->name) . '</option>';
                     }
                     ?>
                 </select>
-                <select id="format-filter">
-                    <option value="">Formats</option>
+                <select id="projet-filter">
+                    <option value="">Projets</option>
                     <?php
-                    $formats = get_terms(array(
-                        'taxonomy' => 'format',
+                    $projets = get_terms(array(
+                        'taxonomy' => 'projet',
                         'hide_empty' => true,
                     ));
 
-                    foreach ($formats as $format) {
-                        echo '<option value="' . esc_attr($format->term_id) . '">' . esc_html($format->name) . '</option>';
+                    foreach ($projets as $projet) {
+                        echo '<option value="' . esc_attr($projet->term_id) . '">' . esc_html($projet->name) . '</option>';
                     }
                     ?>
                 </select>
@@ -48,23 +47,24 @@ get_header();
                     <option value="DESC">à partir des plus récentes</option>
                     <option value="ASC">à partir des plus anciennes</option>
                 </select>
+                <button class="reset-filters">Réinitialiser les filtres</button>
             </div>
         </div>
-        <div class="photo-grid">
+        <div class="image-grid">
             <?php
             $args = array(
-                'post_type'      => 'photo',
+                'post_type'      => 'image',
                 'posts_per_page' => 8,
                 'orderby'        => 'date',
                 'order'          => 'DESC'
             );
-            $photo_query = new WP_Query($args);
-            if ($photo_query->have_posts()) :
-                while ($photo_query->have_posts()) : $photo_query->the_post();
-                    get_template_part('template_parts/photo_block', null, array('photo_id' => get_the_ID()));
+            $image_query = new WP_Query($args);
+            if ($image_query->have_posts()) :
+                while ($image_query->have_posts()) : $image_query->the_post();
+                    get_template_part('template_parts/photo_block', null, array('image_id' => get_the_ID()));
                 endwhile;
             else :
-                echo '<p>Aucune photo trouvée.</p>';
+                echo '<p>Aucune image trouvée.</p>';
             endif;
             wp_reset_postdata();
             ?>
